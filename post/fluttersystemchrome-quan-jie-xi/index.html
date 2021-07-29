@@ -102,7 +102,9 @@
 <p>3.setEnabledSystemUIOverlays(List<SystemUiOverlay> overlays) → Future<void><br>
 设置系统状态栏和导航栏是否显示</p>
 <p>4.restoreSystemUIOverlays() → Future<void><br>
-将状态栏和导航栏还原到通过setEnabledSystemUIOverlays提供的最后设置 。当平台强制启用/禁用UI元素时可以使用。</p>
+将状态栏和导航栏还原到通过setEnabledSystemUIOverlays提供的最后设置 。当平台强制启用/禁用UI元素时可以使用。<br>
+实际开发中遇到一个问题，当设置应用全屏后，进入到有输入栏的界面，点击输入，弹出键盘后，状态栏和导航栏会出现，且不再消失。<br>
+解决办法是，使用插件<a href="https://pub.dev/packages/keyboard_visibility">keyboard_visibility</a>监听键盘收起后，再调用restoreSystemUIOverlays()方法恢复。</p>
 <p>5.setSystemUIOverlayStyle(SystemUiOverlayStyle style) → void<br>
 设置系统状态栏和导航栏（如果有）的样式。</p>
 <p>以及一个参数<br>

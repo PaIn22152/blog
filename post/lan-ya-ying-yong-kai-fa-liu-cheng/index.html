@@ -82,7 +82,80 @@
             <div class="post-date">2021-06-15</div>
             
             <div class="post-content">
-              <p>基于flutter蓝牙插件，不管是android还是ios，流程都是一样的</p>
+              <h1 id="前言">前言</h1>
+<p>使用flutter蓝牙插件<a href="https://pub.dev/packages/flutter_blue">flutter_blue</a>实现。</p>
+<h1 id="开发流程">开发流程</h1>
+<p>Ble低功耗蓝牙，不管是android还是ios，都是如下的流程：</p>
+<h2 id="1扫描设备">1.扫描设备；</h2>
+<p>通过广播的形式，可以扫描附近的蓝牙设备，扫描到的数据包括蓝牙名称name和信号强度rssi。代码如下</p>
+<pre><code class="language-dart">FlutterBlue flutterBlue = FlutterBlue.instance;
+
+// Start scanning
+flutterBlue.startScan(timeout: Duration(seconds: 4));
+
+// Listen to scan results
+var subscription = flutterBlue.scanResults.listen((results) {
+    // do something with scan results
+    for (ScanResult r in results) {
+        print('${r.device.name} found! rssi: ${r.rssi}');
+    }
+});
+
+// Stop scanning
+flutterBlue.stopScan();
+</code></pre>
+<h2 id="2连接设备">2.连接设备</h2>
+<p>扫描设备后，匹配到合适的蓝牙名称，然后连接该设备。代码如下</p>
+<pre><code class="language-dart">
+// Connect to the device
+await device.connect();
+
+// Disconnect from device
+device.disconnect();
+
+</code></pre>
+<h2 id="3发现设备">3.发现设备</h2>
+<p>连接设备后，需要发现设备，因为设备可能提供多个服务，每一个服务又有多个特征，我们要做的是，根据设备方提供的服务值和特征值匹配到可用的特征。代码如下</p>
+<pre><code class="language-dart">
+List&lt;BluetoothService&gt; services = await device.discoverServices();
+    services.forEach((service) {
+      var value = service.uuid.toString();
+      logD(&quot;所有服务值 --- $value&quot;);
+      if (service.uuid.toString().toLowerCase() == bleProduct.serviceUuid) {
+        List&lt;BluetoothCharacteristic&gt; characteristics = service.characteristics;
+        characteristics.forEach((characteristic) async {
+          var valuex = characteristic.uuid.toString();
+          logD(&quot;所有特征值 --- $valuex&quot;);
+          if (characteristic.uuid.toString().toLowerCase() ==
+              bleProduct.characteristicUuid) {
+            logD(&quot;匹配到正确的特征值：&quot; + bleProduct.characteristicUuid);
+            _characteristic = characteristic;
+            bleProduct.device = device;
+            await _receiveFromDevice();
+            bleProduct.connected = true;
+            _bleConnectedListener(true);
+          }
+        });
+      }
+    });
+
+
+</code></pre>
+<h2 id="4数据的发送和接收">4.数据的发送和接收</h2>
+<p>通过以上步骤获得特征</p>
+<pre><code class="language-dart">//接收
+await characteristic.setNotifyValue(true);
+characteristic.value.listen((value) {
+    // do something with new value
+});
+
+//发送
+_characteristic.write(comm);
+</code></pre>
+<h1 id="需要注意的点">需要注意的点</h1>
+<p>1.BluetoothDevice.id在android上，返回的是蓝牙的mac地址，在ios上，返回的是uuid，这是因为平台限制，ios不能获取mac地址，只能获取uuid。<br>
+2.蓝牙数据传输最大长度是20位byte，如果大于这个长度，需要拆分和组装数据。</p>
+<p><a href="">代码地址</a></p>
 
             </div>
             

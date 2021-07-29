@@ -83,47 +83,215 @@
             
             <div class="post-content">
               <p><a href="https://toc.codepie.fun/">在线目录生成工具</a></p>
-<p>目录</p>
-<h1 id="0前言">0.前言</h1>
+<h1 id="目录">目录</h1>
+<ul>
+<li><a href="#head1"> 0.前言</a></li>
+<li><a href="#head2"> 1.定义</a></li>
+<li><a href="#head3"> 2.分类</a>
+<ul>
+<li><a href="#head4"> 创建型模式</a></li>
+<li><a href="#head5"> 结构型模式</a></li>
+<li><a href="#head6"> 行为模式</a></li>
+</ul>
+</li>
+<li><a href="#head7"> 3.创建型模式</a>
+<ul>
+<li><a href="#head8">3.1 单例模式（Singleton Pattern）</a>
+<ul>
+<li><a href="#head9">3.1.1 模式描述</a></li>
+<li><a href="#head10">3.1.2 代码实现</a></li>
+<li><a href="#head11">3.1.3 android源码中的单例模式</a></li>
+</ul>
+</li>
+<li><a href="#head12">3.2 工厂模式（Factory Pattern）</a>
+<ul>
+<li><a href="#head13">3.2.1 模式描述</a></li>
+<li><a href="#head14">3.2.2 代码实现</a></li>
+<li><a href="#head15">3.2.3 android源码中的工厂模式</a></li>
+</ul>
+</li>
+<li><a href="#head16">3.3 抽象工厂模式（Abstract Factory Pattern）</a>
+<ul>
+<li><a href="#head17">3.3.1 模式描述</a></li>
+<li><a href="#head18">3.3.2 代码实现</a></li>
+<li><a href="#head19">3.3.3 android源码中的抽象工厂模式</a></li>
+</ul>
+</li>
+<li><a href="#head20">3.4 建造者模式（Builder Pattern）</a>
+<ul>
+<li><a href="#head21">3.4.1 模式描述</a></li>
+<li><a href="#head22">3.4.2 代码实现</a></li>
+<li><a href="#head23">3.4.3 android源码中的建造者模式</a></li>
+</ul>
+</li>
+<li><a href="#head24">3.5 原型模式（Prototype Pattern）</a>
+<ul>
+<li><a href="#head25">3.5.1 模式描述</a></li>
+<li><a href="#head26">3.5.2 代码实现</a></li>
+<li><a href="#head27">3.5.3 android源码中的原型模式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#head28"> 4.结构型模式</a>
+<ul>
+<li><a href="#head29">4.1 适配器模式（Adapter Pattern）</a>
+<ul>
+<li><a href="#head30">4.1.1 模式描述</a></li>
+<li><a href="#head31">4.1.2 代码实现</a></li>
+<li><a href="#head32">4.1.3 android源码中的适配器模式</a></li>
+</ul>
+</li>
+<li><a href="#head33">4.2 桥接模式（Bridge Pattern）</a>
+<ul>
+<li><a href="#head34">4.2.1 模式描述</a></li>
+<li><a href="#head35">4.2.2 代码实现</a></li>
+<li><a href="#head36">4.2.3 android源码中的桥接模式</a></li>
+</ul>
+</li>
+<li><a href="#head37">4.3 组合模式（Composite Pattern）</a>
+<ul>
+<li><a href="#head38">4.3.1 模式描述</a></li>
+<li><a href="#head39">4.3.2 代码实现</a></li>
+<li><a href="#head40">4.3.3 android源码中的组合模式</a></li>
+</ul>
+</li>
+<li><a href="#head41">4.4 装饰器模式（Decorator Pattern）</a>
+<ul>
+<li><a href="#head42">4.4.1 模式描述</a></li>
+<li><a href="#head43">4.4.2 代码实现</a></li>
+<li><a href="#head44">4.4.3 android源码中的装饰器模式</a></li>
+</ul>
+</li>
+<li><a href="#head45">4.5 外观模式（Facade Pattern）</a>
+<ul>
+<li><a href="#head46">4.5.1 模式描述</a></li>
+<li><a href="#head47">4.5.2 代码实现</a></li>
+<li><a href="#head48">4.5.3 android源码中的外观模式</a></li>
+</ul>
+</li>
+<li><a href="#head49">4.6 享元模式（Flyweight Pattern）</a>
+<ul>
+<li><a href="#head50">4.6.1 模式描述</a></li>
+<li><a href="#head51">4.6.2 代码实现</a></li>
+<li><a href="#head52">4.6.3 android源码中的享元模式</a></li>
+</ul>
+</li>
+<li><a href="#head53">4.7 代理模式（Proxy Pattern）</a>
+<ul>
+<li><a href="#head54">4.7.1 模式描述</a></li>
+<li><a href="#head55">4.7.2 代码实现</a></li>
+<li><a href="#head56">4.7.3 android源码中的代理模式</a></li>
+<li><a href="#head57">4.7.4 静态代理和动态代理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#head58"> 5.行为型模式</a>
+<ul>
+<li><a href="#head59">5.1 责任链模式（Chain of Responsibility Pattern）</a>
+<ul>
+<li><a href="#head60">5.1.1 模式描述</a></li>
+<li><a href="#head61">5.1.2 代码实现</a></li>
+<li><a href="#head62">5.1.3 android源码中的责任链模式</a></li>
+</ul>
+</li>
+<li><a href="#head63">5.2 命令模式（Command Pattern）</a>
+<ul>
+<li><a href="#head64">5.2.1 模式描述</a></li>
+<li><a href="#head65">5.2.2 代码实现</a></li>
+<li><a href="#head66">5.2.3 android源码中的命令模式</a></li>
+</ul>
+</li>
+<li><a href="#head67">5.3 解释器模式（Interpreter Pattern）</a>
+<ul>
+<li><a href="#head68">5.3.1 模式描述</a></li>
+<li><a href="#head69">5.3.2 代码实现</a></li>
+<li><a href="#head70">5.3.3 android源码中的解释器模式</a></li>
+</ul>
+</li>
+<li><a href="#head71">5.4 迭代器模式（Iterator Pattern）</a>
+<ul>
+<li><a href="#head72">5.4.1 模式描述</a></li>
+<li><a href="#head73">5.4.2 代码实现</a></li>
+<li><a href="#head74">5.4.3 android源码中的迭代器模式</a></li>
+</ul>
+</li>
+<li><a href="#head75">5.5 中介者模式（Mediator Pattern）</a>
+<ul>
+<li><a href="#head76">5.5.1 模式描述</a></li>
+<li><a href="#head77">5.5.2 代码实现</a></li>
+<li><a href="#head78">5.5.3 android源码中的中介者模式</a></li>
+</ul>
+</li>
+<li><a href="#head79">5.6 备忘录模式（Memento Pattern）</a>
+<ul>
+<li><a href="#head80">5.6.1 模式描述</a></li>
+<li><a href="#head81">5.6.2 代码实现</a></li>
+<li><a href="#head82">5.6.3 android源码中的备忘录模式</a></li>
+</ul>
+</li>
+<li><a href="#head83">5.7 观察者模式（Observer Pattern）</a>
+<ul>
+<li><a href="#head84">5.7.1 模式描述</a></li>
+<li><a href="#head85">5.7.2 代码实现</a></li>
+<li><a href="#head86">5.7.3 android源码中的观察者模式</a></li>
+</ul>
+</li>
+<li><a href="#head87">5.8 状态模式（State Pattern）</a>
+<ul>
+<li><a href="#head88">5.8.1 模式描述</a></li>
+<li><a href="#head89">5.8.2 代码实现</a></li>
+<li><a href="#head90">5.8.3 android源码中的状态模式</a></li>
+</ul>
+</li>
+<li><a href="#head91">5.9 策略模式（Strategy Pattern）</a>
+<ul>
+<li><a href="#head92">5.9.1 模式描述</a></li>
+<li><a href="#head93">5.9.2 代码实现</a></li>
+<li><a href="#head94">5.9.3 android源码中的策略模式</a></li>
+</ul>
+</li>
+<li><a href="#head95">5.10 模板方法模式（Template Pattern）</a>
+<ul>
+<li><a href="#head96">5.10.1 模式描述</a></li>
+<li><a href="#head97">5.10.2 代码实现</a></li>
+<li><a href="#head98">5.10.3 android源码中的模板方法模式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="span-idhead1-0前言span"><span id="head1"> 0.前言</span></h1>
 <p>个人学习、整理和记录设计模式相关知识点用。其中大部分内容来自以下地址，表示感谢。<br>
 <a href="https://www.cyc2018.xyz/%E5%85%B6%E5%AE%83/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%20-%20%E7%9B%AE%E5%BD%95.html#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80">cyc-设计模式</a><br>
 <a href="https://www.runoob.com/design-pattern/design-pattern-tutorial.html">菜鸟教程-设计模式</a><br>
 <a href="https://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&amp;mid=2650837642&amp;idx=1&amp;sn=79b56fa9e6b3becf9f383d2145576157&amp;chksm=80b74614b7c0cf0238ccecb43c53eafae258a9b16d7337eab5eac913a676fa0faa5afce86052&amp;mpshare=1&amp;scene=23&amp;srcid=0604ruLsxnx8Ox5ZIv2XEbU8&amp;sharer_sharetime=1622771475707&amp;sharer_shareid=8353086dd98f848c83ac5a5620d49f54#rd">Android中竟然包含这么多设计模式，一起来学一波！</a><br>
 <a href="https://www.jianshu.com/p/bf92927c9d22">Android的设计模式</a><br>
 参考书籍：《设计模式-可复用面向对象软件的基础》</p>
-<p>*******************  大纲   start  ****************************</p>
-<h1 id="1定义">1.定义</h1>
-<h1 id="2分类">2.分类</h1>
-<h1 id="3创建型模式">3.创建型模式</h1>
-<h2 id="32-工厂模式">3.2 工厂模式</h2>
-<h3 id="321-模式描述">3.2.1 模式描述</h3>
-<h3 id="322-代码实现">3.2.2 代码实现</h3>
-<h3 id="323-android源码中的工厂模式">3.2.3 android源码中的工厂模式</h3>
-<h1 id="4结构型模式">4.结构型模式</h1>
-<h1 id="5行为型模式">5.行为型模式</h1>
-<p>*******************  大纲    end****************************</p>
-<h1 id="1定义-2">1.定义</h1>
+<h1 id="span-idhead2-1定义span"><span id="head2"> 1.定义</span></h1>
 <p>设计模式代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用，是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。是解决问题的方案，学习现有的设计模式可以做到经验的复用。拥有设计模式词汇，在沟通时就能用更少的词汇来讨论，并且不需要了解底层细节。</p>
-<h1 id="2分类-2">2.分类</h1>
+<h1 id="span-idhead3-2分类span"><span id="head3"> 2.分类</span></h1>
 <p>主要介绍《设计模式-可复用面向对象软件的基础》书中提出的23种模式。<br>
 按照目的不同，可以把设计模式分为三大类，创建型、结构型、行为型。<br>
 创建型模式与对象的创建有关；<br>
 结构型模式处理类或对象的组合；<br>
 行为型模式对类或对象怎样交互和怎样分配职责进行描述。</p>
-<h2 id="创建型模式">创建型模式</h2>
+<h2 id="span-idhead4-创建型模式span"><span id="head4"> 创建型模式</span></h2>
 <p>单例模式（Singleton Pattern）、工厂模式（Factory Pattern）、抽象工厂模式（Abstract Factory Pattern）、建造者模式（Builder Pattern）、原型模式（Prototype Pattern）。</p>
-<h2 id="结构型模式">结构型模式</h2>
+<h2 id="span-idhead5-结构型模式span"><span id="head5"> 结构型模式</span></h2>
 <p>适配器模式（Adapter Pattern）、桥接模式（Bridge Pattern）、组合模式（Composite Pattern）、装饰器模式（Decorator Pattern）、外观模式（Facade Pattern）、享元模式（Flyweight Pattern）、代理模式（Proxy Pattern）。</p>
-<h2 id="行为模式">行为模式</h2>
+<h2 id="span-idhead6-行为模式span"><span id="head6"> 行为模式</span></h2>
 <p>责任链模式（Chain of Responsibility Pattern）、命令模式（Command Pattern）、解释器模式（Interpreter Pattern）、迭代器模式（Iterator Pattern）、中介者模式（Mediator Pattern）、备忘录模式（Memento Pattern）、观察者模式（Observer Pattern）、状态模式（State Pattern）、策略模式（Strategy Pattern）、模板方法模式（Template Pattern）。</p>
-<h1 id="3创建型模式-2">3.创建型模式</h1>
-<h2 id="31-单例模式singleton-pattern">3.1 单例模式（Singleton Pattern）</h2>
-<h3 id="311-模式描述">3.1.1 模式描述</h3>
+<h1 id="span-idhead7-3创建型模式span"><span id="head7"> 3.创建型模式</span></h1>
+<p>这些设计模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用new运算符直接实例化对象，这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活。</p>
+<h2 id="span-idhead831-单例模式singleton-patternspan"><span id="head8">3.1 单例模式（Singleton Pattern）</span></h2>
+<h3 id="span-idhead9311-模式描述span"><span id="head9">3.1.1 模式描述</span></h3>
 <p>意图：保证一个类仅有一个实例，并提供一个访问它的全局访问点。<br>
 适用性：以下情况可以使用单例模式<br>
 1.当类只能有一个实例而且客户可以从一个众所周知的访问点访问它时；<br>
 2.当这个唯一实例应该是通过子类化可扩展的，并且客户应该无需更改代码就能使用一个扩展的实例时。</p>
-<h3 id="312-代码实现">3.1.2 代码实现</h3>
+<h3 id="span-idhead10312-代码实现span"><span id="head10">3.1.2 代码实现</span></h3>
 <pre><code class="language-java">// 双重校验锁实现单例模式
 public class Singleton {
     private static Singleton instance;
@@ -187,7 +355,7 @@ public enum Singleton2 {
 </code></pre>
 <p>而枚举实现方式，不可用反射破坏，<a href="https://bbs.huaweicloud.com/blogs/229523">原因可以看这里</a></p>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/creational/singleton">github 代码地址</a></p>
-<h3 id="313-android源码中的单例模式">3.1.3 android源码中的单例模式</h3>
+<h3 id="span-idhead11313-android源码中的单例模式span"><span id="head11">3.1.3 android源码中的单例模式</span></h3>
 <p><a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/util/Singleton.java">android.util.Singleton</a></p>
 <pre><code class="language-java">/**
  * Singleton helper class for lazily initialization.
@@ -260,13 +428,13 @@ static volatile EventBus defaultInstance;
     }
     
 </code></pre>
-<h2 id="32-工厂模式factory-pattern">3.2 工厂模式（Factory Pattern）</h2>
-<h3 id="321-模式描述-2">3.2.1 模式描述</h3>
+<h2 id="span-idhead1232-工厂模式factory-patternspan"><span id="head12">3.2 工厂模式（Factory Pattern）</span></h2>
+<h3 id="span-idhead13321-模式描述span"><span id="head13">3.2.1 模式描述</span></h3>
 <p>意图：定义一个用于创建对象的接口，让子类决定实例化哪一个类。使得类的实例化延迟到其子类。<br>
 适用性：以下情况使用单例模式：<br>
 1.当一个类不知道它所必须创建的对象的类的时候。<br>
 2.当一个类希望由它的子类来指定它所创建的对象的时候。</p>
-<h3 id="322-代码实现-2">3.2.2 代码实现</h3>
+<h3 id="span-idhead14322-代码实现span"><span id="head14">3.2.2 代码实现</span></h3>
 <pre><code class="language-java">
 public interface Shape {
     void draw();
@@ -313,12 +481,12 @@ public class ShapeFactory {
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/creational/factory">github代码地址</a></p>
-<h3 id="323-android源码中的工厂模式-2">3.2.3 android源码中的工厂模式</h3>
+<h3 id="span-idhead15323-android源码中的工厂模式span"><span id="head15">3.2.3 android源码中的工厂模式</span></h3>
 <p><a href="https://android.googlesource.com/platform/packages/apps/Camera2/+/master/src/com/android/camera/debug/Logger.java">com.android.camera.debug.Logger</a><br>
 <a href="https://android.googlesource.com/platform/packages/apps/Camera2/+/master/src/com/android/camera/debug/Loggers.java">com.android.camera.debug.Loggers</a><br>
 还有context.getSystemService(&quot;name&quot;)也可以看作是工厂模式。</p>
-<h2 id="33-抽象工厂模式abstract-factory-pattern">3.3 抽象工厂模式（Abstract Factory Pattern）</h2>
-<h3 id="331-模式描述">3.3.1 模式描述</h3>
+<h2 id="span-idhead1633-抽象工厂模式abstract-factory-patternspan"><span id="head16">3.3 抽象工厂模式（Abstract Factory Pattern）</span></h2>
+<h3 id="span-idhead17331-模式描述span"><span id="head17">3.3.1 模式描述</span></h3>
 <p>意图：提供一个创建一系列相关或互相依赖对象的接口，而无需指定它们具体的类。<br>
 适用性：以下情况使用抽象工厂模式：<br>
 1.一个系统要独立于它的产品的创建、组合和表示时。<br>
@@ -327,7 +495,7 @@ public class ShapeFactory {
 4.当你提供一个产品类库，而只想显示它们的接口而不是实现时。<br>
 结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1622794270561.png" alt="" loading="lazy"></p>
-<h3 id="332-代码实现">3.3.2 代码实现</h3>
+<h3 id="span-idhead18332-代码实现span"><span id="head18">3.3.2 代码实现</span></h3>
 <pre><code class="language-java">
 //抽象产品
 public interface AbstractProductA {
@@ -412,16 +580,16 @@ public static void main() {
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/creational/abstractFactory">github代码地址</a><br>
 抽象工厂给我的感觉，就是把依赖倒置原则运用到了极致，完完全全的面向接口编程。</p>
-<h3 id="333-android源码中的抽象工厂模式">3.3.3 android源码中的抽象工厂模式</h3>
+<h3 id="span-idhead19333-android源码中的抽象工厂模式span"><span id="head19">3.3.3 android源码中的抽象工厂模式</span></h3>
 <p>在Android中，抽象工厂比较少，可以把整个Service看作一个大抽象工厂，通过名字去拿服务，拿到服务对象后，再调用对象里的抽象方法。</p>
-<h2 id="34-建造者模式builder-pattern">3.4 建造者模式（Builder Pattern）</h2>
-<h3 id="341-模式描述">3.4.1 模式描述</h3>
+<h2 id="span-idhead2034-建造者模式builder-patternspan"><span id="head20">3.4 建造者模式（Builder Pattern）</span></h2>
+<h3 id="span-idhead21341-模式描述span"><span id="head21">3.4.1 模式描述</span></h3>
 <p>意图：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。<br>
 适用性：1.当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。<br>
 2.当构造过程必须允许被构造的对象有不同的表示时。<br>
 结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1623135917393.png" alt="" loading="lazy"></p>
-<h3 id="342-代码实现">3.4.2 代码实现</h3>
+<h3 id="span-idhead22342-代码实现span"><span id="head22">3.4.2 代码实现</span></h3>
 <pre><code class="language-java">public class Request {
     String url;
     String method;
@@ -483,7 +651,7 @@ public static void main() {
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/creational/builder">github代码地址</a></p>
-<h3 id="343-android源码中的建造者模式">3.4.3 android源码中的建造者模式</h3>
+<h3 id="span-idhead23343-android源码中的建造者模式span"><span id="head23">3.4.3 android源码中的建造者模式</span></h3>
 <p>android最常用到的建造者模式是dialog，使用代码如下：</p>
 <pre><code class="language-java">        AlertDialog.Builder builder=new AlertDialog.Builder(null);
         builder
@@ -519,8 +687,8 @@ public static void main() {
                 .build();
         GitHubService service = retrofit.create(GitHubService.class);
 </code></pre>
-<h2 id="35-原型模式prototype-pattern">3.5 原型模式（Prototype Pattern）</h2>
-<h3 id="351-模式描述">3.5.1 模式描述</h3>
+<h2 id="span-idhead2435-原型模式prototype-patternspan"><span id="head24">3.5 原型模式（Prototype Pattern）</span></h2>
+<h3 id="span-idhead25351-模式描述span"><span id="head25">3.5.1 模式描述</span></h3>
 <p>意图：用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</p>
 <p>适用性：<br>
 1.当一个系统应该独立于他的产品创建、构成和表示时。<br>
@@ -529,7 +697,7 @@ public static void main() {
 4.当一个类的实例只能有几个不同状态组合中的一种时。</p>
 <p>结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1623204557106.png" alt="" loading="lazy"></p>
-<h3 id="352-代码实现">3.5.2 代码实现</h3>
+<h3 id="span-idhead26352-代码实现span"><span id="head26">3.5.2 代码实现</span></h3>
 <pre><code class="language-java">
 public interface Prototype {
     public Prototype myClone();
@@ -588,7 +756,7 @@ public class ConcretePrototype implements Prototype {
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/creational/prototype">github代码地址</a></p>
-<h3 id="353-android源码中的原型模式">3.5.3 android源码中的原型模式</h3>
+<h3 id="span-idhead27353-android源码中的原型模式span"><span id="head27">3.5.3 android源码中的原型模式</span></h3>
 <p>android中的Intent有用到原型模式，部分代码如下：</p>
 <pre><code class="language-java">public class Intent implements Parcelable, Cloneable {
 
@@ -616,9 +784,10 @@ public class ConcretePrototype implements Prototype {
         Intent i1 = new Intent(&quot;action&quot;);
         Intent i2 = (Intent) i1.clone();
 </code></pre>
-<h1 id="4结构型模式-2">4.结构型模式</h1>
-<h2 id="41-适配器模式adapter-pattern">4.1 适配器模式（Adapter Pattern）</h2>
-<h3 id="411-模式描述">4.1.1 模式描述</h3>
+<h1 id="span-idhead28-4结构型模式span"><span id="head28"> 4.结构型模式</span></h1>
+<p>这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。</p>
+<h2 id="span-idhead2941-适配器模式adapter-patternspan"><span id="head29">4.1 适配器模式（Adapter Pattern）</span></h2>
+<h3 id="span-idhead30411-模式描述span"><span id="head30">4.1.1 模式描述</span></h3>
 <p>意图：将一个类的接口装换成客户希望的另外一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。<br>
 适用性：<br>
 1.当你想使用一个存在的类，而他的接口不符合你的需求。<br>
@@ -626,7 +795,7 @@ public class ConcretePrototype implements Prototype {
 3.（仅适用于对象adapter）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配他的父类接口。<br>
 结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1623291758760.png" alt="" loading="lazy"></p>
-<h3 id="412-代码实现">4.1.2 代码实现</h3>
+<h3 id="span-idhead31412-代码实现span"><span id="head31">4.1.2 代码实现</span></h3>
 <pre><code class="language-java">
 public interface Input5v1a {
     public void in();
@@ -659,7 +828,7 @@ public class PowerAdapter implements Input5v1a {
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/structural/adapter">github代码地址</a></p>
-<h3 id="413-android源码中的适配器模式">4.1.3 android源码中的适配器模式</h3>
+<h3 id="span-idhead32413-android源码中的适配器模式span"><span id="head32">4.1.3 android源码中的适配器模式</span></h3>
 <p>最常见的是RecyclerView的Adapter，使用RecyclerView时，需要写一个Adapter继承自RecyclerView.Adapter并实现三个方法，RecyclerView再绑定这个实现的Adapter对象，然后就可以把数据转成view显示在界面上。简单示例代码如下</p>
 <pre><code class="language-java">public class MyAdapter extends RecyclerView.Adapter&lt;MyAdapter.MyVH&gt; {
 
@@ -702,8 +871,8 @@ public class PowerAdapter implements Input5v1a {
 RecyclerView view = null;
         view.setAdapter(new MyAdapter(new ArrayList&lt;&gt;()));
 </code></pre>
-<h2 id="42-桥接模式bridge-pattern">4.2 桥接模式（Bridge Pattern）</h2>
-<h3 id="421-模式描述">4.2.1 模式描述</h3>
+<h2 id="span-idhead3342-桥接模式bridge-patternspan"><span id="head33">4.2 桥接模式（Bridge Pattern）</span></h2>
+<h3 id="span-idhead34421-模式描述span"><span id="head34">4.2.1 模式描述</span></h3>
 <p>意图：将抽象部分与他的实现部分分离，使他们都可以独立地变化。<br>
 适用性：<br>
 1.当你不希望在抽象和它的实现之间有一个固定的绑定关系。例如是因为在程序运行时刻，实现部分可以被选择或者切换。<br>
@@ -712,7 +881,7 @@ RecyclerView view = null;
 4.想在多个对象间共享实现，但同时要求客户并不知道这一点。<br>
 结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1623748712465.png" alt="" loading="lazy"></p>
-<h3 id="422-代码实现">4.2.2 代码实现</h3>
+<h3 id="span-idhead35422-代码实现span"><span id="head35">4.2.2 代码实现</span></h3>
 <pre><code class="language-java">
 public interface Color {
     void draw(String box);
@@ -753,18 +922,18 @@ RedBox redBox = new RedBox();
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/structural/bridge">github代码地址</a></p>
-<h3 id="423-android源码中的桥接模式">4.2.3 android源码中的桥接模式</h3>
+<h3 id="span-idhead36423-android源码中的桥接模式span"><span id="head36">4.2.3 android源码中的桥接模式</span></h3>
 <p>AbsListView 与 ListAdapter 之间是桥接模式，类图如下<br>
 <img src="https://PaIn22152.github.io/post-images/1623754437536.webp" alt="" loading="lazy"></p>
-<h2 id="43-组合模式composite-pattern">4.3 组合模式（Composite Pattern）</h2>
-<h3 id="431-模式描述">4.3.1 模式描述</h3>
+<h2 id="span-idhead3743-组合模式composite-patternspan"><span id="head37">4.3 组合模式（Composite Pattern）</span></h2>
+<h3 id="span-idhead38431-模式描述span"><span id="head38">4.3.1 模式描述</span></h3>
 <p>意图：将对象组合成树形结构以表示“部分-整体”的层次结构。Composite使得用户对单个对象和组合对象的使用具有一致性。</p>
 <p>适用性：<br>
 1.你想表示对象的部分-整体层次结构。<br>
 2.你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。</p>
 <p>结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1623811206452.png" alt="" loading="lazy"></p>
-<h3 id="432-代码实现">4.3.2 代码实现</h3>
+<h3 id="span-idhead39432-代码实现span"><span id="head39">4.3.2 代码实现</span></h3>
 <p>二叉树是最简单的组合模式</p>
 <pre><code class="language-java">
 public class ListNode {
@@ -792,15 +961,15 @@ public class ListNode {
         listNode.right = new ListNode(3);
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/structural/composite">github代码地址</a></p>
-<h3 id="433-android源码中的组合模式">4.3.3 android源码中的组合模式</h3>
+<h3 id="span-idhead40433-android源码中的组合模式span"><span id="head40">4.3.3 android源码中的组合模式</span></h3>
 <p>ViewGroup和View就是典型的组合模式，ViewGroup是一个View，同时又包含了View。</p>
 <pre><code class="language-java">public abstract class ViewGroup extends View{
     private View[] mChildren;
 }
 
 </code></pre>
-<h2 id="44-装饰器模式decorator-pattern">4.4 装饰器模式（Decorator Pattern）</h2>
-<h3 id="441-模式描述">4.4.1 模式描述</h3>
+<h2 id="span-idhead4144-装饰器模式decorator-patternspan"><span id="head41">4.4 装饰器模式（Decorator Pattern）</span></h2>
+<h3 id="span-idhead42441-模式描述span"><span id="head42">4.4.1 模式描述</span></h3>
 <p>意图：动态地给已有对象添加功能。类对扩展开放，对修改关闭。</p>
 <p>适用性：<br>
 1.在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。<br>
@@ -808,7 +977,7 @@ public class ListNode {
 3.当不能采用生成子类的方法进行扩充时。一种情况是，可能有大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目爆炸增长。另一种情况可能是因为类定义被隐藏，或者类定义不能用于生成子类。</p>
 <p>结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1623896108504.png" alt="" loading="lazy"></p>
-<h3 id="442-代码实现">4.4.2 代码实现</h3>
+<h3 id="span-idhead43442-代码实现span"><span id="head43">4.4.2 代码实现</span></h3>
 <pre><code class="language-java">
 public abstract class Room {
     public abstract void fitment();//装修房间
@@ -871,7 +1040,7 @@ public class Kitchen extends RoomDecorator {
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/structural/decorator">github代码地址</a></p>
-<h3 id="443-android源码中的装饰器模式">4.4.3 android源码中的装饰器模式</h3>
+<h3 id="span-idhead44443-android源码中的装饰器模式span"><span id="head44">4.4.3 android源码中的装饰器模式</span></h3>
 <p>Android中的Activity、Service、Application等都是一个Context，这里面实际上就是通过装饰者模式来实现的。下面以startActivity这个方法进行分析<br>
 Context是一个抽象类，定义了大量的抽象方法，包括startActivity；</p>
 <pre><code class="language-java">public abstract class Context {
@@ -927,14 +1096,14 @@ Context是一个抽象类，定义了大量的抽象方法，包括startActivity
     }
 </code></pre>
 <p>startActivity的详细流程，会再写一篇专门的文章。</p>
-<h2 id="45-外观模式facade-pattern">4.5 外观模式（Facade Pattern）</h2>
-<h3 id="451-模式描述">4.5.1 模式描述</h3>
+<h2 id="span-idhead4545-外观模式facade-patternspan"><span id="head45">4.5 外观模式（Facade Pattern）</span></h2>
+<h3 id="span-idhead46451-模式描述span"><span id="head46">4.5.1 模式描述</span></h3>
 <p>意图：为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这一接口使得子系统更加容易使用。</p>
 <p>适用性：<br>
 1.当你要为一个复杂子系统提供一个简单接口时。<br>
 2.客户程序与抽象类的实现部分之间存在着很大的依赖性。引入外观模式将这个子系统与客户以及其他的子系统分离，可以提高子系统的独立性和可移植性。<br>
 3.当你需要构建一个层次结构的子系统时，使用外观模式定义子系统中每层的入口点。</p>
-<h3 id="452-代码实现">4.5.2 代码实现</h3>
+<h3 id="span-idhead47452-代码实现span"><span id="head47">4.5.2 代码实现</span></h3>
 <pre><code class="language-java">
 public class SubSystem {
 
@@ -969,15 +1138,15 @@ public class Facade {
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/structural/facade">github代码地址</a></p>
-<h3 id="453-android源码中的外观模式">4.5.3 android源码中的外观模式</h3>
+<h3 id="span-idhead48453-android源码中的外观模式span"><span id="head48">4.5.3 android源码中的外观模式</span></h3>
 <p>外观模式是比较常见的设计模式，在android中的应用也比较广泛，比如Context类，里面封装了很多方法，比如startActivity，实际上是通过AMS来实现的，通过封装的方式，Context类隐藏了细节，我们只需要简单调用一个方法即可启动一个新的activity。</p>
-<h2 id="46-享元模式flyweight-pattern">4.6 享元模式（Flyweight Pattern）</h2>
-<h3 id="461-模式描述">4.6.1 模式描述</h3>
+<h2 id="span-idhead4946-享元模式flyweight-patternspan"><span id="head49">4.6 享元模式（Flyweight Pattern）</span></h2>
+<h3 id="span-idhead50461-模式描述span"><span id="head50">4.6.1 模式描述</span></h3>
 <p>意图：运用共享技术有效地支持大量细粒度的对象。</p>
 <p>主要解决：在有大量对象时，有可能会造成内存溢出，可以把其中共同的部分抽象出来，如果有相同的业务请求，直接返回在内存中已有对象，避免重新创建。</p>
 <p>结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1623986037627.png" alt="" loading="lazy"></p>
-<h3 id="462-代码实现">4.6.2 代码实现</h3>
+<h3 id="span-idhead51462-代码实现span"><span id="head51">4.6.2 代码实现</span></h3>
 <pre><code class="language-java">
 public interface IBike {
     void billing(int time);
@@ -1030,7 +1199,7 @@ public class BikeFactory {
 
 </code></pre>
 <p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/structural/flyweight">github代码地址</a></p>
-<h3 id="463-android源码中的享元模式">4.6.3 android源码中的享元模式</h3>
+<h3 id="span-idhead52463-android源码中的享元模式span"><span id="head52">4.6.3 android源码中的享元模式</span></h3>
 <p>在android中，通过Message.obtain();方法获取Message对象，这里就使用了享元模式。<br>
 还有java中的String，如果字符串常量池中有此字符，直接返回，否则先在字符串常量池中创建。</p>
 <pre><code class="language-java">        String s1 = &quot;abc&quot;;
@@ -1040,8 +1209,8 @@ public class BikeFactory {
         Message.obtain();
 
 </code></pre>
-<h2 id="47-代理模式proxy-pattern">4.7 代理模式（Proxy Pattern）</h2>
-<h3 id="471-模式描述">4.7.1 模式描述</h3>
+<h2 id="span-idhead5347-代理模式proxy-patternspan"><span id="head53">4.7 代理模式（Proxy Pattern）</span></h2>
+<h3 id="span-idhead54471-模式描述span"><span id="head54">4.7.1 模式描述</span></h3>
 <p>意图：为其他对象提供一种代理，以控制对这个对象的访问。生活中，代购，打官司等，都是一种代理模式。</p>
 <p>适用性：在需要用比较通用和复杂的对象指针代替简单的指针的时候，使用代理模式。常有以下四种代理：<br>
 1.远程代理（Remote Proxy），控制对远程对象（不同地址空间）的访问，它负责将请求及其参数进行编码，并向不同地址空间中的对象发送已经编码的请求；<br>
@@ -1050,7 +1219,7 @@ public class BikeFactory {
 4.智能代理（Smart Reference），取代了简单的指针，它在访问对象时执行一些附加操作，记录对象的引用次数，当第一次引用一个对象时，将它装入内存，在访问一个实际对象前，检查是否已经锁定了它，以确保其他对象不能改变它。</p>
 <p>结构图：<br>
 <img src="https://PaIn22152.github.io/post-images/1624242599849.png" alt="" loading="lazy"></p>
-<h3 id="472-代码实现">4.7.2 代码实现</h3>
+<h3 id="span-idhead55472-代码实现span"><span id="head55">4.7.2 代码实现</span></h3>
 <pre><code class="language-java">
 public interface Image {
     void display();
@@ -1102,8 +1271,8 @@ public class ProxyImage implements Image {
         proxyImage.display();
 
 </code></pre>
-<p><a href="">github代码地址</a></p>
-<h3 id="473-android源码中的代理模式">4.7.3 android源码中的代理模式</h3>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/structural/proxy">github代码地址</a></p>
+<h3 id="span-idhead56473-android源码中的代理模式span"><span id="head56">4.7.3 android源码中的代理模式</span></h3>
 <p>android中用到代理模式的地方比较多，比如ActivityManagerProxy这个代理类，他和ActivityManagerNative都实现了IActivityManager这个接口，IActivityManager是抽象主题，ActivityManagerProxy是代理类，真实主题是ActivityManagerNative，实际上ActivityManagerNative是个抽象类，真正的具体实现实在它的子类ActivityManagerService中。</p>
 <p>此外还有AIDL也用到代理模式，当我们编写好AIDL文件后，编译器会自动给我们增加一些代码</p>
 <pre><code class="language-java">
@@ -1126,7 +1295,7 @@ IRemoteService.Stub()
 
 </code></pre>
 <p>通过IRemoteService的Stub类拿对象，这个对象是通过一个代理类创建出来的。</p>
-<h3 id="474-静态代理和动态代理">4.7.4 静态代理和动态代理</h3>
+<h3 id="span-idhead57474-静态代理和动态代理span"><span id="head57">4.7.4 静态代理和动态代理</span></h3>
 <p>从代码的角度来分，可以分为静态代理和动态代理。静态代理就是在程序运行前就已经存在代理类的字节码文件，代理类和委托类的关系在运行前就确定了。动态代理类的源码是在程序运行期间根据反射等机制动态的生成，所以不存在代理类的字节码文件，代理类和委托类的关系是在程序运行时确定的。上例是静态代理。</p>
 <p>动态代理需要实现InvocationHandler接口，然后重写invoke()方法，以下为动态代理实现代码：</p>
 <pre><code class="language-java">public class DynamicProxy implements InvocationHandler {
@@ -1157,77 +1326,899 @@ IRemoteService.Stub()
 
 </code></pre>
 <p><a href="https://jasonkayzk.github.io/2019/09/18/Java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">更多静态代理和动态代理信息</a></p>
-<h1 id="5行为型模式-2">5.行为型模式</h1>
-<h2 id="51-责任链模式chain-of-responsibility-pattern">5.1 责任链模式（Chain of Responsibility Pattern）</h2>
-<h3 id="511-模式描述">5.1.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="512-代码实现">5.1.2 代码实现</h3>
-<h3 id="513-android源码中的责任链模式">5.1.3 android源码中的责任链模式</h3>
-<h2 id="52-命令模式command-pattern">5.2 命令模式（Command Pattern）</h2>
-<h3 id="521-模式描述">5.2.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="522-代码实现">5.2.2 代码实现</h3>
-<h3 id="523-android源码中的命令模式">5.2.3 android源码中的命令模式</h3>
-<h2 id="53-解释器模式interpreter-pattern">5.3 解释器模式（Interpreter Pattern）</h2>
-<h3 id="531-模式描述">5.3.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="532-代码实现">5.3.2 代码实现</h3>
-<h3 id="533-android源码中的解释器模式">5.3.3 android源码中的解释器模式</h3>
-<h2 id="54-迭代器模式iterator-pattern">5.4 迭代器模式（Iterator Pattern）</h2>
-<h3 id="541-模式描述">5.4.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="542-代码实现">5.4.2 代码实现</h3>
-<h3 id="543-android源码中的迭代器模式">5.4.3 android源码中的迭代器模式</h3>
-<h2 id="55-中介者模式mediator-pattern">5.5 中介者模式（Mediator Pattern）</h2>
-<h3 id="551-模式描述">5.5.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="552-代码实现">5.5.2 代码实现</h3>
-<h3 id="553-android源码中的中介者模式">5.5.3 android源码中的中介者模式</h3>
-<h2 id="56-备忘录模式memento-pattern">5.6 备忘录模式（Memento Pattern）</h2>
-<h3 id="561-模式描述">5.6.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="562-代码实现">5.6.2 代码实现</h3>
-<h3 id="563-android源码中的备忘录模式">5.6.3 android源码中的备忘录模式</h3>
-<h2 id="57-观察者模式observer-pattern">5.7 观察者模式（Observer Pattern）</h2>
-<h3 id="571-模式描述">5.7.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="572-代码实现">5.7.2 代码实现</h3>
-<h3 id="573-android源码中的观察者模式">5.7.3 android源码中的观察者模式</h3>
-<h2 id="58-状态模式state-pattern">5.8 状态模式（State Pattern）</h2>
-<h3 id="581-模式描述">5.8.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="582-代码实现">5.8.2 代码实现</h3>
-<h3 id="583-android源码中的状态模式">5.8.3 android源码中的状态模式</h3>
-<h2 id="59-策略模式strategy-pattern">5.9 策略模式（Strategy Pattern）</h2>
-<h3 id="591-模式描述">5.9.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="592-代码实现">5.9.2 代码实现</h3>
-<h3 id="593-android源码中的策略模式">5.9.3 android源码中的策略模式</h3>
-<h2 id="510-模板方法模式template-pattern">5.10 模板方法模式（Template Pattern）</h2>
-<h3 id="5101-模式描述">5.10.1 模式描述</h3>
-<p>意图：<br>
-适用性：<br>
-结构图：</p>
-<h3 id="5102-代码实现">5.10.2 代码实现</h3>
-<h3 id="5103-android源码中的模板方法模式">5.10.3 android源码中的模板方法模式</h3>
+<h1 id="span-idhead58-5行为型模式span"><span id="head58"> 5.行为型模式</span></h1>
+<p>这些设计模式特别关注对象之间的通信。</p>
+<h2 id="span-idhead5951-责任链模式chain-of-responsibility-patternspan"><span id="head59">5.1 责任链模式（Chain of Responsibility Pattern）</span></h2>
+<h3 id="span-idhead60511-模式描述span"><span id="head60">5.1.1 模式描述</span></h3>
+<p>意图：使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。</p>
+<p>适用性：<br>
+1.有多个的对象可以处理一个请求，哪个对象处理该请求运行时刻自动确定。<br>
+2.你想在不明确指定接收者的情况下，向多个对象中的一个提交一个请求。<br>
+3.可处理一个请求的对象集合应被动态指定。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1624414888412.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead61512-代码实现span"><span id="head61">5.1.2 代码实现</span></h3>
+<pre><code class="language-java">
+public class Request {
+    enum RequestType {
+        TYPE_1, TYPE_2
+    }
+
+    public RequestType type;
+    public String name;
+
+    public Request(RequestType type, String name) {
+        this.type = type;
+        this.name = name;
+    }
+}
+
+public abstract class Handler {
+    protected Handler successor;
+
+    public Handler(Handler successor) {
+        this.successor = successor;
+    }
+
+    protected abstract void handleRequest(Request request);
+}
+
+
+public class ConcreteHandler1 extends Handler {
+    public ConcreteHandler1(Handler successor) {
+        super(successor);
+    }
+
+    @Override
+    protected void handleRequest(Request request) {
+        if (request.type == Request.RequestType.TYPE_1) {
+            System.out.println(&quot;ConcreteHandler1 handle  name=&quot; + request.name);
+            return;
+        }
+        if (successor != null) {
+            successor.handleRequest(request);
+        }
+    }
+}
+
+public class ConcreteHandler2 extends Handler {
+    public ConcreteHandler2(Handler successor) {
+        super(successor);
+    }
+
+    @Override
+    protected void handleRequest(Request request) {
+        if (request.type == Request.RequestType.TYPE_2) {
+            System.out.println(&quot;ConcreteHandler2 handle  name=&quot; + request.name);
+            return;
+        }
+        if (successor != null) {
+            successor.handleRequest(request);
+        }
+    }
+}
+
+
+//调用代码
+        Handler handler1 = new ConcreteHandler1(null);
+        Handler handler2 = new ConcreteHandler2(handler1);
+
+        handler2.handleRequest(new Request(Request.RequestType.TYPE_1, &quot;request 111&quot;));
+        handler2.handleRequest(new Request(Request.RequestType.TYPE_2, &quot;request 22&quot;));
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/chain">github代码地址</a></p>
+<h3 id="span-idhead62513-android源码中的责任链模式span"><span id="head62">5.1.3 android源码中的责任链模式</span></h3>
+<p>android中事件分发机制，父view接到事件，传递给子view，就是责任链模式。<br>
+还有okhttp中，对请求的处理也是用到了责任链模式。</p>
+<h2 id="span-idhead6352-命令模式command-patternspan"><span id="head63">5.2 命令模式（Command Pattern）</span></h2>
+<h3 id="span-idhead64521-模式描述span"><span id="head64">5.2.1 模式描述</span></h3>
+<p>意图：将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作。</p>
+<p>适用性：<br>
+1.抽象出待执行的动作以参数化某对象；<br>
+2.在不同的时刻指定、排列和执行请求；<br>
+3.支持取消操作；<br>
+4.支持修改日志；<br>
+5.用构建在原语操作上的高层操作构造一个系统。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1624501542181.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead65522-代码实现span"><span id="head65">5.2.2 代码实现</span></h3>
+<pre><code class="language-java">
+public interface Order {
+    void execute();
+}
+
+public class Stock {
+
+    public String name;
+    public int quantity;
+
+    public Stock(String name, int quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
+
+    public void buy() {
+        System.out.println(&quot;Stock [ Name: &quot; + name + &quot;,&quot; +
+                &quot; Quantity: &quot; + quantity + &quot; ] bought&quot;);
+    }
+
+    public void sell() {
+        System.out.println(&quot;Stock [ Name: &quot; + name + &quot;, &quot; +
+                &quot;Quantity: &quot; + quantity + &quot; ] sold&quot;);
+    }
+}
+
+
+public class BuyStock implements Order {
+
+    private Stock stock;
+
+    public BuyStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    @Override
+    public void execute() {
+        stock.buy();
+    }
+}
+
+public class SellStock implements Order {
+
+    private Stock stock;
+
+    public SellStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    @Override
+    public void execute() {
+        stock.sell();
+    }
+}
+
+public class Broker {
+    private List&lt;Order&gt; orderList=new ArrayList&lt;&gt;();
+
+    public void takeOrder(Order order){
+        orderList.add(order);
+    }
+
+    public void placeOrders(){
+        for(Order order:orderList){
+            order.execute();
+        }
+        orderList.clear();
+    }
+}
+
+//调用代码
+        Stock stock = new Stock(&quot;huawei&quot;, 100);
+
+        BuyStock buyStock = new BuyStock(stock);
+        SellStock sellStock = new SellStock(stock);
+
+        Broker broker = new Broker();
+        broker.takeOrder(buyStock);
+        broker.takeOrder(sellStock);
+
+        broker.placeOrders();
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/command">github代码地址</a></p>
+<h3 id="span-idhead66523-android源码中的命令模式span"><span id="head66">5.2.3 android源码中的命令模式</span></h3>
+<p>Thread的使用就是一个简单的命令模式</p>
+<pre><code class="language-java">new Thread(new Runnable(){
+    @Override
+    public void run(){
+        //do something
+    }
+}).start();
+</code></pre>
+<p>Thread的start（）方法即命令的调用者，同时Thread的内部会调用Runnable的run（），这里Thread又充当了具体的命令角色，最后的Runnable则是接受者，负责最后的功能处理。</p>
+<p>另外，Handler也是典型的命令模式。Handler接受者，执行消息的处理操作；Looper调用者，调用消息的处理方法；Message命令角色，消息类。</p>
+<h2 id="span-idhead6753-解释器模式interpreter-patternspan"><span id="head67">5.3 解释器模式（Interpreter Pattern）</span></h2>
+<h3 id="span-idhead68531-模式描述span"><span id="head68">5.3.1 模式描述</span></h3>
+<p>意图：给定一个语言，定义他的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。这种模式被用在SQL解析、符号处理引擎等。</p>
+<p>适用性：当有一个语言需要解释执行，并且你可将该语言中的句子表示为一个抽象语法树时，可使用解释器模式。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1625023226075.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead69532-代码实现span"><span id="head69">5.3.2 代码实现</span></h3>
+<pre><code class="language-java">
+public interface Expression {
+   public boolean interpret(String context);
+}
+
+public class TerminalExpression implements Expression {
+
+    String data;
+
+    public TerminalExpression(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public boolean interpret(String context) {
+        return context.contains(data);
+    }
+}
+
+public class OrExpression implements Expression {
+
+    Expression expression1;
+    Expression expression2;
+
+    public OrExpression(Expression expression1, Expression expression2) {
+        this.expression1 = expression1;
+        this.expression2 = expression2;
+    }
+
+    @Override
+    public boolean interpret(String context) {
+        return expression1.interpret(context) || expression2.interpret(context);
+    }
+}
+
+public class AndExpression implements Expression {
+    Expression expression1;
+    Expression expression2;
+
+    public AndExpression(Expression expression1, Expression expression2) {
+        this.expression1 = expression1;
+        this.expression2 = expression2;
+    }
+
+    @Override
+    public boolean interpret(String context) {
+        return expression1.interpret(context) &amp;&amp; expression2.interpret(context);
+    }
+}
+
+
+//调用代码
+    //规则：Robert 和 John 是男性
+    public static Expression getMaleExpression() {
+        Expression robert = new TerminalExpression(&quot;Robert&quot;);
+        Expression john = new TerminalExpression(&quot;John&quot;);
+        return new OrExpression(robert, john);
+    }
+
+    //规则：Julie 是一个已婚的女性
+    public static Expression getMarriedWomenExpression() {
+        Expression julie = new TerminalExpression(&quot;Julie&quot;);
+        Expression married = new TerminalExpression(&quot;Married&quot;);
+        return new AndExpression(julie, married);
+    }
+
+    public static void main() {
+
+        System.out.println(&quot;John is male:&quot; + getMaleExpression().interpret(&quot;John&quot;));
+        System.out.println(&quot;Amy is male:&quot; + getMaleExpression().interpret(&quot;Amy&quot;));
+        System.out.println(&quot;Amy is Married women:&quot; + getMarriedWomenExpression().interpret(&quot;Amy&quot;));
+        System.out.println(&quot;Julie is Married women:&quot; + getMarriedWomenExpression().interpret(&quot;Married Julie&quot;));
+
+    }
+
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/expression">github代码地址</a></p>
+<h3 id="span-idhead70533-android源码中的解释器模式span"><span id="head70">5.3.3 android源码中的解释器模式</span></h3>
+<p>android中的AndroidManifest.xml文件，实际上是由PackageManagerService使用<a href="https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/content/pm/PackageParser.java">android.content.pm.PackageParser</a>这个类来解释的，对于AndroidManifest中的每一个标签，都有对应的类去保存相应的信息。</p>
+<h2 id="span-idhead7154-迭代器模式iterator-patternspan"><span id="head71">5.4 迭代器模式（Iterator Pattern）</span></h2>
+<h3 id="span-idhead72541-模式描述span"><span id="head72">5.4.1 模式描述</span></h3>
+<p>意图：提供一种方法顺序访问一个聚合对象中各个元素，而又不暴露该对象的内部表示。</p>
+<p>适用性：<br>
+1.访问一个聚合对象的内容，而无需暴露它的内部表示。<br>
+2.支持对聚合对象的多种遍历。<br>
+3.为遍历不同的聚合结构提供一个统一的接口，即支持多态迭代。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1625104800373.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead73542-代码实现span"><span id="head73">5.4.2 代码实现</span></h3>
+<pre><code class="language-java">
+public interface Iterator {
+    boolean hasNext();//是否存在下一条记录
+
+    Object next();//返回当前记录，并移到下一条记录
+}
+
+public interface Aggregate {
+    int size();//容器大小
+
+    String get(int location);//获取指定位置的数据
+
+    void add(String s);//添加数据到容器
+
+    void remove(String s);//从容器中移除数据
+
+    Iterator iterator();//返回容器的迭代器
+}
+
+public class DeliveryIterator implements Iterator {
+
+    private Aggregate aggregate;//容器对象
+    private int index;//当前索引
+
+    public DeliveryIterator(Aggregate aggregate) {
+        this.aggregate = aggregate;
+        this.index = 0;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return index &lt; aggregate.size();
+    }
+
+    @Override
+    public Object next() {
+        return aggregate.get(index++);
+    }
+}
+
+
+public class DeliveryAggregate implements Aggregate {
+
+    private List&lt;String&gt; list = new ArrayList&lt;&gt;();//内部使用list存储数据
+
+    @Override
+    public int size() {
+        return list.size();
+    }
+
+    @Override
+    public String get(int location) {
+        return list.get(location);
+    }
+
+    @Override
+    public void add(String s) {
+        list.add(s);
+    }
+
+    @Override
+    public void remove(String s) {
+        list.remove(s);
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new DeliveryIterator(this);
+    }
+}
+
+//调用代码
+        Aggregate aggregate = new DeliveryAggregate();
+        aggregate.add(&quot;1111111&quot;);
+        aggregate.add(&quot;22222&quot;);
+        aggregate.add(&quot;3333333&quot;);
+        aggregate.add(&quot;44&quot;);
+
+        Iterator iterator = aggregate.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(&quot;当前数据为：&quot; + iterator.next());
+        }
+        System.out.println(&quot;没有更多数据了。。。&quot;);
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/iterator">github代码地址</a></p>
+<h3 id="span-idhead74543-android源码中的迭代器模式span"><span id="head74">5.4.3 android源码中的迭代器模式</span></h3>
+<p>java中的Map、List等都使用了迭代器模式。android中使用数据库查询时返回的Cursor油标对象，实际上就是使用了迭代器模式实现的。</p>
+<pre><code class="language-java">
+//Cursor使用
+        Cursor cursor = null;
+        if (cursor.moveToFirst()) {
+            do {
+                cursor.getInt(0);//获取第一列数据
+                cursor.getString(1);//获取第二列数据
+            } while (cursor.moveToFirst());//移到下一行
+        }
+
+//Cursor源码
+//Cursor是一个接口，实际上就是迭代器接口
+public interface Cursor extends Closeable {
+    //其他代码略
+    boolean moveToFirst();
+    int getInt(int columnIndex);
+    String getString(int columnIndex);
+    boolean moveToNext();
+}
+
+</code></pre>
+<h2 id="span-idhead7555-中介者模式mediator-patternspan"><span id="head75">5.5 中介者模式（Mediator Pattern）</span></h2>
+<h3 id="span-idhead76551-模式描述span"><span id="head76">5.5.1 模式描述</span></h3>
+<p>意图：用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地互相引用，从而使耦合松散，而且可以独立地改变他们之间的交互。</p>
+<p>适用性：<br>
+1.一组对象以定义良好但是复杂的方式进行通信。产生的相互依赖关系结构混乱且难以理解。<br>
+2.一个对象引用其他很多对象并且直接与这些对象通信，导致难以复用该对象。<br>
+3.想定制一个分布在多个类中的行为，而又不想生成太多的子类。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1625191340656.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead77552-代码实现span"><span id="head77">5.5.2 代码实现</span></h3>
+<pre><code class="language-java">
+public interface HouseMediator {
+    void notice(Person person, String msg);
+}
+
+public abstract class Person {
+
+    String name;
+    HouseMediator houseMediator;
+
+    public Person(String name, HouseMediator houseMediator) {
+        this.name = name;
+        this.houseMediator = houseMediator;
+    }
+
+    public abstract void send(String msg);//发布消息
+
+    public abstract void getNotice(String msg);//接收消息
+}
+
+
+public class Landlord extends Person {
+    
+    public Landlord(String name, HouseMediator houseMediator) {
+        super(name, houseMediator);
+    }
+
+    @Override
+    public void send(String msg) {
+        System.out.println(name + &quot;房东发布消息：&quot; + msg);
+        houseMediator.notice(this, msg);
+    }
+
+    @Override
+    public void getNotice(String msg) {
+        System.out.println(name + &quot;房东收到消息：&quot; + msg);
+    }
+}
+
+
+public class Purchaser extends Person {
+
+    public Purchaser(String name, HouseMediator houseMediator) {
+        super(name, houseMediator);
+    }
+
+    @Override
+    public void send(String msg) {
+        System.out.println(name + &quot;买房者发布消息：&quot; + msg);
+        houseMediator.notice(this, msg);
+    }
+
+    @Override
+    public void getNotice(String msg) {
+        System.out.println(name + &quot;买房者收到消息：&quot; + msg);
+    }
+}
+
+public class LiangJia implements HouseMediator {
+
+    List&lt;Landlord&gt; landlordList = new ArrayList&lt;&gt;();
+    List&lt;Purchaser&gt; purchaserList = new ArrayList&lt;&gt;();
+
+    public void addLandlord(Landlord landlord) {
+        landlordList.add(landlord);
+    }
+
+    public void addPurchaser(Purchaser purchaser) {
+        purchaserList.add(purchaser);
+    }
+
+    @Override
+    public void notice(Person person, String msg) {
+        System.out.println(&quot;中介者收到消息，并转发给目标人群&quot;);
+        if (person instanceof Landlord) {
+            for (Purchaser p : purchaserList) {
+                p.getNotice(msg);
+            }
+        } else if (person instanceof Purchaser) {
+            for (Landlord l : landlordList) {
+                l.getNotice(msg);
+            }
+        }
+    }
+}
+
+//调用代码
+        LiangJia liangJia = new LiangJia();
+        Landlord bob = new Landlord(&quot;Bob&quot;, liangJia);
+        liangJia.addLandlord(bob);
+        liangJia.addLandlord(new Landlord(&quot;Amy&quot;, liangJia));
+        liangJia.addPurchaser(new Purchaser(&quot;Jerry&quot;, liangJia));
+        Purchaser jack = new Purchaser(&quot;Jack&quot;, liangJia);
+        liangJia.addPurchaser(jack);
+
+        bob.send(&quot;深圳湾壹号，别墅出租&quot;);
+
+        jack.send(&quot;求租一个单间&quot;);
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/mediator">github代码地址</a></p>
+<h3 id="span-idhead78553-android源码中的中介者模式span"><span id="head78">5.5.3 android源码中的中介者模式</span></h3>
+<p>android中锁屏功能，通过类<a href="https://android.googlesource.com/platform/frameworks/base/+/master/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java">com.android.systemui.keyguard.KeyguardViewMediator</a>来协调处理，KeyguardViewMediator就是一个中介者的角色。</p>
+<h2 id="span-idhead7956-备忘录模式memento-patternspan"><span id="head79">5.6 备忘录模式（Memento Pattern）</span></h2>
+<h3 id="span-idhead80561-模式描述span"><span id="head80">5.6.1 模式描述</span></h3>
+<p>意图：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可以将该对象恢复到原先保存的状态。</p>
+<p>适用性：<br>
+1.必须保存一个对象在某一时刻的（部分）状态，这样以后需要时它才能恢复到先前的状态。<br>
+2.如果一个用接口来让其他对象直接得到这些状态，将会暴露对象的实现细节并破坏对象的封装性。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1625710128690.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead81562-代码实现span"><span id="head81">5.6.2 代码实现</span></h3>
+<pre><code class="language-java">
+public class Memento {
+    public int coin;//金币
+    public int level;//等级
+}
+
+public class Game {
+    private int coin = 0;
+    private int level = 1;
+
+    @Override
+    public String toString() {
+        return &quot;Game{&quot; +
+                &quot;coin=&quot; + coin +
+                &quot;, level=&quot; + level +
+                '}';
+    }
+
+    public void play() {
+        System.out.println(&quot;打野。。。&quot;);
+        level++;
+        System.out.println(&quot;等级提升了，当前等级=&quot; + level);
+        coin += 22;
+        System.out.println(&quot;获得金币22，当前金币=&quot; + coin);
+    }
+
+    public void exit() {
+        System.out.println(&quot;退出游戏，游戏属性=&quot; + toString());
+    }
+
+    public Memento createMemento() {
+        Memento memento = new Memento();
+        memento.coin = coin;
+        memento.level = level;
+        return memento;
+    }
+
+    public void setMemento(Memento memento) {
+        level = memento.level;
+        coin = memento.coin;
+        System.out.println(&quot;读取存档信息：&quot; + toString());
+    }
+}
+
+
+public class Caretaker {
+    private Memento memento;
+
+    public void setMemento(Memento memento) {
+        this.memento = memento;
+    }
+
+    public Memento getMemento() {
+        return memento;
+    }
+}
+
+//调用代码
+        System.out.println(&quot;第一次进入游戏&quot;);
+        Game game = new Game();
+        game.play();
+        Memento memento = game.createMemento();
+        Caretaker caretaker = new Caretaker();
+        caretaker.setMemento(memento);
+        game.exit();
+
+        System.out.println(&quot;_________---------________&quot;);
+        System.out.println(&quot;第二次进入游戏&quot;);
+        Game game2 = new Game();
+        System.out.println(&quot;游戏属性：&quot; + game2.toString());
+        game2.setMemento(caretaker.getMemento());
+        System.out.println(&quot;游戏属性：&quot; + game2.toString());
+        game2.play();
+        System.out.println(&quot;游戏属性：&quot; + game2.toString());
+        game2.exit();
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/memento">github代码地址</a></p>
+<h3 id="span-idhead82563-android源码中的备忘录模式span"><span id="head82">5.6.3 android源码中的备忘录模式</span></h3>
+<p>Activity提供了状态保存机制，来保证Activity在被系统回收后能够恢复当前Activity的数据。用onSaveInstanceState来保存当前Activity的状态，用onRestoreInstanceState来恢复Activity状态。以下是两个方法的源码：</p>
+<pre><code class="language-java">    protected void onSaveInstanceState(Bundle outState) {//保存各种状态
+
+        //1.保存Activity对应Window的状态信息
+        outState.putBundle(WINDOW_HIERARCHY_TAG, mWindow.saveHierarchyState());
+
+        //2.如果存在Fragments,则保存所有Fragments的状态信息
+        Parcelable p = mFragments.saveAllState();
+        if (p != null) {
+            outState.putParcelable(FRAGMENTS_TAG, p);
+        }
+
+        //3.如果设置了ActivityLifecycleCallbacks回调,那么会调用ActivityLifecycleCallbacks的onSaveInstanceState来进行保存状态信息
+        getApplication().dispatchActivitySaveInstanceState(this, outState);
+    }
+
+       protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        if (mWindow != null) {
+            //获取保存过的window状态信息
+            Bundle windowState = savedInstanceState.getBundle(WINDOW_HIERARCHY_TAG);
+            //如果存在状态信息，则window进行恢复
+            if (windowState != null) {
+                mWindow.restoreHierarchyState(windowState);
+            }
+        }
+    }
+
+</code></pre>
+<h2 id="span-idhead8357-观察者模式observer-patternspan"><span id="head83">5.7 观察者模式（Observer Pattern）</span></h2>
+<h3 id="span-idhead84571-模式描述span"><span id="head84">5.7.1 模式描述</span></h3>
+<p>意图：定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并自动更新。</p>
+<p>适用性：<br>
+1.当一个抽象模型有两个方面，其中一个方面依赖于另一方面。将二者封装在独立的对象中以使他们可以各自独立地改变和复用。<br>
+2.当一个对象的改变需要同时改变其他对象，而不知道具体有多少对象有待改变。<br>
+3.当一个对象必须通知其他对象，而它又不能假定其他对象是谁。换言之，你不希望这些对象是紧密耦合的。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1626080329927.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead85572-代码实现span"><span id="head85">5.7.2 代码实现</span></h3>
+<pre><code class="language-java">
+public abstract class Observer {
+    protected Subject subject;
+    public abstract void update();
+}
+
+public class Subject {
+    final private List&lt;Observer&gt; observers = new ArrayList&lt;&gt;();
+    private int state;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int i) {
+        state = i;
+        notifyAllObserver();
+    }
+
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void notifyAllObserver() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+}
+
+
+public class BinaryObserver extends Observer {
+
+    public BinaryObserver(Subject subject) {
+        this.subject = subject;
+        this.subject.attach(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println(&quot;Binary String:&quot; + Integer.toBinaryString(subject.getState()));
+    }
+}
+
+public class HexObserver extends Observer {
+    public HexObserver(Subject subject) {
+        this.subject = subject;
+        this.subject.attach(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println(&quot;Hex String:&quot; + Integer.toHexString(subject.getState()));
+    }
+}
+
+public class OctalObserver extends Observer {
+    public OctalObserver(Subject subject) {
+        this.subject = subject;
+        this.subject.attach(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println(&quot;Octal String:&quot; + Integer.toOctalString(subject.getState()));
+    }
+}
+
+//调用代码
+        Subject subject = new Subject();
+
+        new HexObserver(subject);
+        new OctalObserver(subject);
+        new BinaryObserver(subject);
+
+        subject.setState(14);
+        subject.setState(23);
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/observer">github代码地址</a></p>
+<h3 id="span-idhead86573-android源码中的观察者模式span"><span id="head86">5.7.3 android源码中的观察者模式</span></h3>
+<p>RecyclerView.Adapter的notifyDataSetChanged()使用的观察者模式，代码如下</p>
+<pre><code class="language-java">
+public final void notifyDataSetChanged() {
+            mObservable.notifyChanged();
+        }
+
+ public void notifyChanged() {
+            // since onChanged() is implemented by the app, it could do anything, including
+            // removing itself from {@link mObservers} - and that could cause problems if
+            // an iterator is used on the ArrayList {@link mObservers}.
+            // to avoid such problems, just march thru the list in the reverse order.
+            for (int i = mObservers.size() - 1; i &gt;= 0; i--) {
+                mObservers.get(i).onChanged();
+            }
+        }
+
+</code></pre>
+<h2 id="span-idhead8758-状态模式state-patternspan"><span id="head87">5.8 状态模式（State Pattern）</span></h2>
+<h3 id="span-idhead88581-模式描述span"><span id="head88">5.8.1 模式描述</span></h3>
+<p>意图：允许一个对象在其内部状态改变时改变他的行为。对象看起来似乎修改了它的类。</p>
+<p>适用性：<br>
+1.一个对象的行为取决于他的状态，并且他必须在运行时刻根据状态改变他的行为。<br>
+2.一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1626141111846.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead89582-代码实现span"><span id="head89">5.8.2 代码实现</span></h3>
+<pre><code class="language-java">
+public class Context {
+    public State state;
+}
+
+public interface State {
+    public void doAction(Context context);
+}
+
+public class StartState implements State {
+    @Override
+    public void doAction(Context context) {
+        System.out.println(&quot;player is in start state&quot;);
+        context.state = this;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return &quot;Start State&quot;;
+    }
+}
+
+public class StopState implements State {
+    @Override
+    public void doAction(Context context) {
+        System.out.println(&quot;Player is in stop state&quot;);
+        context.state = this;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return &quot;Stop State&quot;;
+    }
+}
+
+//调用代码
+        Context context = new Context();
+
+        StartState startState = new StartState();
+        startState.doAction(context);
+        System.out.println(&quot;&quot; + context.state.toString());
+
+        StopState stopState = new StopState();
+        stopState.doAction(context);
+        System.out.println(&quot;&quot; + context.state.toString());
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/state">github代码地址</a></p>
+<h3 id="span-idhead90583-android源码中的状态模式span"><span id="head90">5.8.3 android源码中的状态模式</span></h3>
+<p>android中播放器依赖自身状态，进行播放暂停操作。</p>
+<h2 id="span-idhead9159-策略模式strategy-patternspan"><span id="head91">5.9 策略模式（Strategy Pattern）</span></h2>
+<h3 id="span-idhead92591-模式描述span"><span id="head92">5.9.1 模式描述</span></h3>
+<p>意图：定义一系列的算法，把他们一个个封装起来，并且使他们可以互相替换。本模式使得算法可以独立于使用他的客户而改变。</p>
+<p>适用性：<br>
+1.许多相关的类仅仅是行为有异。“策略”提供了一种用多个行为中的一个行为来配置一个类的方法。<br>
+2.需要使用一个算法的不同变体。例如，你可能会定义一些放映不同的空间/时间权衡的算法。当这些变体实现为一个算法的类层次时，可以使用策略模式。<br>
+3.算法使用客户不应该知道的数据。可使用策略模式以避免暴露复杂的、与算法相关的数据结构。<br>
+4.一个类定义了多种行为，并且这些行为在这个类的操作中以多个条件语句的形式出现。将相关的条件分支移入他们各自的Strategy类中，以代替这些条件语句。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1626228941914.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead93592-代码实现span"><span id="head93">5.9.2 代码实现</span></h3>
+<pre><code class="language-java">
+public interface Strategy {
+    public int doOperation(int n1, int n2);
+}
+
+public class Add implements Strategy {
+    @Override
+    public int doOperation(int n1, int n2) {
+        return n1 + n2;
+    }
+}
+
+public class Subtract implements Strategy {
+    @Override
+    public int doOperation(int n1, int n2) {
+        return n1 - n2;
+    }
+}
+
+public class Multiply implements Strategy {
+    @Override
+    public int doOperation(int n1, int n2) {
+        return n1 * n2;
+    }
+}
+
+public class Context {
+    private Strategy strategy;
+
+    public Context(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public int execute(int n1, int n2) {
+        return strategy.doOperation(n1, n2);
+    }
+}
+
+//调用代码
+        Context context1 = new Context(new Add());
+        System.out.println(&quot;10+6=&quot; + context1.execute(10, 6));
+
+        Context context2 = new Context(new Subtract());
+        System.out.println(&quot;10-6=&quot; + context2.execute(10, 6));
+
+        Context context3 = new Context(new Multiply());
+        System.out.println(&quot;10*6=&quot; + context3.execute(10, 6));
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/strategy">github代码地址</a></p>
+<h3 id="span-idhead94593-android源码中的策略模式span"><span id="head94">5.9.3 android源码中的策略模式</span></h3>
+<p>android中，通过设置不同的adapter（即不同的策略），可以显示不同的recyclerView布局。<br>
+另外，动画中的差值器（Interpolator）也用到了策略模式。</p>
+<h2 id="span-idhead95510-模板方法模式template-patternspan"><span id="head95">5.10 模板方法模式（Template Pattern）</span></h2>
+<h3 id="span-idhead965101-模式描述span"><span id="head96">5.10.1 模式描述</span></h3>
+<p>意图：定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构，即可重定义该算法的某些特定步骤。</p>
+<p>适用性：<br>
+1.一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。<br>
+2.个子类中公共的行为应被提取出来，并集中到一个公共父类中，以避免代码重复。<br>
+3.控制子类扩展。</p>
+<p>结构图：<br>
+<img src="https://PaIn22152.github.io/post-images/1626230013994.png" alt="" loading="lazy"></p>
+<h3 id="span-idhead975102-代码实现span"><span id="head97">5.10.2 代码实现</span></h3>
+<pre><code class="language-java">
+public class BaseActivity extends Activity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //do something
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //do something
+    }
+}
+
+public class HomeActivity extends BaseActivity {
+}
+
+</code></pre>
+<p><a href="https://github.com/PaIn22152/Demos/tree/master/designPattern/src/main/java/com/perdev/designpattern/behavioral/template">github代码地址</a></p>
+<h3 id="span-idhead985103-android源码中的模板方法模式span"><span id="head98">5.10.3 android源码中的模板方法模式</span></h3>
+<p>如上例代码，模板方法模式在日常开发中用得比较频繁。</p>
 
             </div>
             

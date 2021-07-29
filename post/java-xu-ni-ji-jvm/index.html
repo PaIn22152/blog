@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java虚拟机-JVM | Payne的小站</title>
+<meta name="description" content="克己、积累、坚持、格局、全力以赴
+对过程的关注要多于对结果的关注">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://PaIn22152.github.io/favicon.ico">
+<link rel="stylesheet" href="https://PaIn22152.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://PaIn22152.github.io">
+        <img src="https://PaIn22152.github.io/images/avatar.png" class="site-logo">
+        <h1 class="site-title">Payne的小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      克己、积累、坚持、格局、全力以赴
+对过程的关注要多于对结果的关注
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java虚拟机-JVM</h2>
+            <div class="post-date">2021-07-22</div>
+            
+            <div class="post-content">
+              <p>目录</p>
+<h1 id="0前言">0.前言</h1>
+<p>个人学习、整理和记录JVM相关知识点用。其中大部分内容来自以下地址，表示感谢。<br>
+<a href="https://www.cyc2018.xyz/Java/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.html#%E4%B8%80%E3%80%81%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F">CS-Notes</a><br>
+<a href="https://www.cnblogs.com/wmyskxz/p/9045972.html">java知识点解析</a><br>
+<a href="https://segmentfault.com/a/1190000024447450">jvm入门之程序计数器</a><br>
+参考书籍：《深入理解Java虚拟机》</p>
+<h1 id="1运行时数据区域">1.运行时数据区域</h1>
+<p><img src="https://PaIn22152.github.io/post-images/1626926029448.png" alt="" loading="lazy"><br>
+<img src="https://PaIn22152.github.io/post-images/1626926336679.png" alt="" loading="lazy"><br>
+1.1 程序计数器<br>
+记录正在执行的虚拟机字节码指令的地址（如果正在执行的是本地方法，则为空），属于线程私有。</p>
+<p>1.2 Java虚拟机栈<br>
+每个Java方法在执行的同时，会创建一个栈用于存储局部变量表、操作数栈、常量池引用等信息。从方法调用直至执行完成的过程，对应着一个栈帧在Java虚拟机栈中入栈和出栈的过程。<br>
+这个Java虚拟机栈内存大小，在JDK1.4默认256K，在JDK1.5+默认1M。<br>
+该区域可能抛出以下异常：<br>
+当线程请求的栈深度超过最大值，会抛出StackOverflowError异常；<br>
+栈进行动态扩展时，如果无法申请到足够内存，会抛出OutOfMemoryError异常。</p>
+<p>1.3 本地方法栈<br>
+本地方法栈与Java虚拟机栈类似，他们之间的区别是本地方法栈为本地方法服务。<br>
+本地方法一般是用其他语言（C，C++或汇编语言等）编写的，并且被编译为基于本机硬件和操作系统的程序，对待这些方法需要特别处理。</p>
+<p>1.4 堆<br>
+所有对象在这里分配内存，是垃圾收集的主要区域（“GC堆”）。<br>
+现代的垃圾收集器基本都是采用分代收集算法，其主要的思想是针对不同类型的对象采取不同的垃圾回收算法。可以将堆分成两块，新生代（Young Generation）和老年代（Old Generation）。<br>
+堆不需要连续内存，并且可以动态增加其内存，增加失败会抛出OutOfMemoryError异常。</p>
+<p>1.5 方法区<br>
+用于存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。<br>
+和堆一样不需要连续的内存，并且可以动态扩展，动态扩展失败一样会抛出OutOfMemoryError异常。对这块区域进行垃圾回收的主要目标是对常量池的回收和对类的卸载，但是一般比较难实现。<br>
+HotSpot虚拟机把他当成永久代来进行垃圾回收。但很难确定永久代的大小，因为它受到很多因素影响，并且每次Full GC之后永久代的大小都会改变，所以经常会抛出OutOfMemoryError异常。为了更容易管理方法区，从JDK1.8开始，移除永久代，并把方法区移至元空间，它位于本地内存中，而不是虚拟机内存中。<br>
+方法区是一个JVM规范，永久代与元空间都是其一种实现方式。在JDK1.8之后，原来永久代的数据被分到了堆和元空间中。元空间存储类的元信息，堆存储静态变量和常量池等。</p>
+<p>1.6 运行时常量池<br>
+运行时常量池是方法区的一部分。Class文件中的常量池（编译器生成的字面量和符号引用）会在类加载后被放入这个区域。除了在编译期生成的常量，还允许动态生成，例如String类的intern()。</p>
+<p>1.7 直接内存<br>
+在JDK1.4中引入了NIO类，它可以使用Native函数库直接分配堆外内存，然后通过Java堆里的DirecrByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在堆内存和堆外内存来回拷贝数据。</p>
+<h1 id="2gc回收机制和策略">2.GC回收机制和策略</h1>
+<p>GC回收主要是针对堆和方法区进行。程序计数器、虚拟机栈和本地方法栈者三个区域属于线程私有的，只存在于线程的生命周期内，线程结束之后就会消失，因此不需要对这三个区域进行GC回收。</p>
+<h2 id="21-判断一个对象是否可被回收">2.1 判断一个对象是否可被回收</h2>
+<p>2.1.1 引用计数算法<br>
+当有循环引用时，计数器永远不为0，导致无法对他们进行回收。</p>
+<p>2.1.2 可达性分析算法<br>
+以GC Roots为起点进行搜索，可达的对象都是存活的，不可达对象可被回收。<br>
+Java虚拟机使用该算法来判断对象是否可回收，GC Roots一般包含以下内容：<br>
+1.虚拟机栈中局部变量表引用的对象；<br>
+2.本地方法栈中JNI中引用的对象；<br>
+3.方法区中类静态属性引用的对象；<br>
+4.方法区中的常量引用的对象。</p>
+<p>2.1.3 方法区的回收<br>
+因为方法区主要存放永久代对象，而永久代对象的回收率很低，所以在方法区上进行回收性价比不高。<br>
+主要是对常量池的回收和对类的卸载。<br>
+为了避免内存溢出，在大量使用反射和动态代理的场景都需要虚拟机具备卸载功能。<br>
+类的卸载条件很多，需要满足以下三个条件，并且满足了条件也不一定会被卸载：<br>
+1.该类所有的实例都已经被回收，此时堆中不存在该类的任何实例；<br>
+2.加载该类的ClassLoader已经被回收。<br>
+3.该类对应的Class对象没有在任何地方被引用，也就无法在任何地方通过反射访问该类方法。</p>
+<p>2.1.4 finalize()<br>
+类似C++的析构函数，用于关闭外部资源。但是try-finally等方式可以做得更好，并且finalize()方法运行代价很高，不确定性大，无法保证各个对象的调用顺序，因此最好别用。<br>
+当一个对象可被回收时，如果需要执行该对象的finalize()方法，那么就有可能在该方法中让对象重新被引用，从而实现自救。自救只能进行一次，如果回收的对象已经调用了finalize()方法自救，那后面回收时就不会再调用该方法。</p>
+<h2 id="22-引用类型">2.2 引用类型</h2>
+<p>上述的引用计数和可达性算法，在判断对象是否能回收时，都与引用有关。Java有4中强度不同的引用类型。<br>
+2.2.1 强引用<br>
+被强引用的对象不会被回收。<br>
+使用new一个新对象的方式来创建强引用。</p>
+<pre><code class="language-java">Object obj = new Object();
+</code></pre>
+<p>2.2.2 软引用<br>
+被软引用关联的对象，当发生GC时，如果内存不够的情况，才会回收。<br>
+使用SoftReference类来创建软引用。</p>
+<pre><code class="language-java">Object obj = new Object();
+SoftReference&lt;Object&gt; sf = new SoftReference&lt;Object&gt;(obj);
+obj = null;  // 使对象只被软引用关联
+</code></pre>
+<p>2.2.3 弱引用<br>
+被弱引用关联的对象，当发生GC时，一定会被回收。<br>
+使用WeakReference类来创建弱引用。</p>
+<pre><code class="language-java">Object obj = new Object();
+WeakReference&lt;Object&gt; wf = new WeakReference&lt;Object&gt;(obj);
+obj = null;
+</code></pre>
+<p>2.2.4 虚引用<br>
+又称为幽灵引用或者幻影引用，一个对象是否有虚引用，不会对其生存时间造成影响，也无法通过虚引用得到一个对象。<br>
+为一个对象设置虚引用的唯一目的，是能在这个对象被回收时收到一个系统通知。<br>
+使用PhantoReference来创建虚引用。</p>
+<pre><code class="language-java">Object obj = new Object();
+PhantomReference&lt;Object&gt; pf = new PhantomReference&lt;Object&gt;(obj, null);
+obj = null;
+</code></pre>
+<h2 id="23-垃圾收集算法">2.3 垃圾收集算法</h2>
+<p>2.3.1 标记-清除<br>
+<img src="https://PaIn22152.github.io/post-images/1627271144269.png" alt="" loading="lazy"><br>
+在标记阶段，程序会检查每个对象是否为活动对象，如果是活动对象，则程序会在对象头部打上标记。<br>
+在清除阶段，会进行对象回收并取消标志位，另外，还会判断回收后的分块与前一个空闲分块是否连续，若连续，会合并这两个分块。回收对象就是把对象作为分块，连接到被称为“空闲链表”的单向链表，之后进行分配时只需要遍历这个空闲链表，就可以找到分块。<br>
+在分配时，程序会搜索空闲链表寻找空间大小等于新对象大小size的块block。如果找到的块等于size，会直接返回这个分块；如果找到的块大于size，会将块分割成两部分，返回size大小的分块，并把另外一块返回给空闲链表。<br>
+算法的不足：<br>
+1.标记和清除过程效率都不高；<br>
+2.会产生大量不连续的内存碎片，导致无法给大对象分配内存。</p>
+<p>2.3.2 标记-整理<br>
+<img src="https://PaIn22152.github.io/post-images/1627271768972.png" alt="" loading="lazy"><br>
+让所有存活的对象向一端移动，然后直接清理掉端边界外的内存。<br>
+优点：不会产生内存碎片<br>
+不足：需要移动大量对象，处理效率比较低。</p>
+<p>2.3.3 复制<br>
+<img src="https://PaIn22152.github.io/post-images/1627351724448.png" alt="" loading="lazy"><br>
+将内存划分为大小相等的两块，每次只使用其中一块，当一块内存用完了，就将还存活的对象复制到另一块上面，然后再把使用过的内存空间进行一次清理。<br>
+主要的不足是只使用了内存的一半。</p>
+<p>2.3.4 分代收集<br>
+现在的商业虚拟机采用分代收集算法，它根据对象存活周期，将内存划分为几块，不同块采用适当的收集算法。一般将堆分为新生代和老年代，新生代使用复制算法，老年代使用标记-清除或者标记-整理。</p>
+<h2 id="24-垃圾收集器">2.4 垃圾收集器</h2>
+<p><img src="https://PaIn22152.github.io/post-images/1627352920523.jpg" alt="" loading="lazy"><br>
+以上是HotSpot虚拟机中的7个垃圾收集器，连线表示垃圾收集器可以配合使用。<br>
+术语说明。单线程与多线程，单线程指的是垃圾收集器只使用一个线程，而多线程使用多个线程。串行与并行，串行指的是垃圾收集器与用户程序交替执行，这意味着在执行垃圾收集器的时候，需要停顿用户程序；并行指的是垃圾收集器和用户程序同时执行。除了CMS和G1是并行外，其他垃圾收集器都是串行。</p>
+<p>2.4.1 Serial收集器<br>
+<img src="https://PaIn22152.github.io/post-images/1627353679075.jpg" alt="" loading="lazy"><br>
+Serial翻译为串行，也就是说它是以串行的方式执行。<br>
+同时它是单线程，只会在一个线程进行垃圾收集工作。<br>
+它的优点是简单高校，在单个CPU环境下，由于没有线程交互的开销，因此拥有最高的单线程收集效率。<br>
+它是Client场景下的默认新生代收集器，因为在该场景下内存一般不会很大。它收集100-200MB垃圾的停顿时间，可以控制在100ms内。</p>
+<p>2.4.2 ParNew收集器<br>
+<img src="https://PaIn22152.github.io/post-images/1627354031403.jpg" alt="" loading="lazy"><br>
+是Serial收集器的多线程版本。<br>
+是Server场景下默认的新生代收集器，除了性能原因外，主要是因为只有Serial收集器和ParNew收集器能和CMS收集器配合使用。</p>
+<p>2.4.3 Parallel Scavenge收集器<br>
+多线程收集器。其他收集器目标是尽可能缩短垃圾收集时用户线程的停顿时间，而他的目标是达到一个可控制的吞吐量，因此它被称为“吞吐量优先”收集器。这里的吞吐量指CPU用于运行用户程序的时间占总时间的比值。<br>
+停顿时间越短就越适合需要用户交互的程序，良好的相应速度能提升用户体验。而高吞吐量则可以高效率地利用CPU时间，尽快完成程序的运算任务，适合在后台运算而不需要太多交互的任务。<br>
+缩短停顿时间是以牺牲吞吐量和新生代空间换取的，新生代空间变小，垃圾回收变得频繁，导致吞吐量下降。<br>
+可以通过一个开关参数打开GC自适应的调节策略（GC Ergonomics），就不需要手工指定新生代的大小（-Xmn）、Eden和Survivor区的比例、晋升老年代对象年龄等细节参数。虚拟机会根据当前系统的运行情况收集性能监控信息，动态调整这些参数以提供最合适的停顿时间或者最大的吞吐量。</p>
+<p>2.4.4 Serial Old收集器<br>
+<img src="https://PaIn22152.github.io/post-images/1627359266923.jpg" alt="" loading="lazy"><br>
+是Serial收集器的老年代版本，也是给Client场景下的虚拟机使用。如果用在Server场景下，它有两大用途：<br>
+1.在JKD1.5以及之前版本（Parallel Old诞生以前）中与Parallel Scavenge收集器搭配使用。<br>
+2.作为CMS收集器的后备预案，在并发收集发生ConcurrentModeFailure时使用。</p>
+<p>2.4.5 Parallel Old收集器<br>
+<img src="https://PaIn22152.github.io/post-images/1627359451139.jpg" alt="" loading="lazy"><br>
+是Parallel Scavenge收集器的老年代版本。<br>
+在注重吞吐量以及CPU资源敏感的场合，都可以优先考虑ParallelScavenge加Parallel Old收集器。</p>
+<p>2.4.6 CMS收集器<br>
+<img src="https://PaIn22152.github.io/post-images/1627359617479.jpg" alt="" loading="lazy"><br>
+CMS（Concurrent Mark Sweep），Mark Sweep指的是标记-清除算法。<br>
+分为以下四个流程：<br>
+1.初始标记：仅仅只是标记以下GC Roots能直接关联到的对象，速度很快，需要停顿；<br>
+2.并发标记：进行GC Roots Tracing的过程，它在整个回收过程中耗时最长，不需要停顿；<br>
+3.重新标记：为了修正并发标记期间因用户程序继续运行而导致标记产生变动的那一部分的标记记录，需要停顿；<br>
+4.并发清除：不需要停顿。<br>
+缺点：<br>
+吞吐量低：低停顿时间是以牺牲吞吐量为代价的，导致CPU利用率不高；<br>
+无法处理浮动垃圾，可能出现ConcurrentModeFailure。浮动垃圾是指并发清除阶段，由于用户线程继续运行而产生的垃圾，这部分垃圾只能到下一次GC时才能进行回收。由于浮动垃圾的存在，因此需要预留出一部分内存，意味着CMS收集不能像其他收集器那样等待老年代快满的时候再回收。如果预留的内存不够存放浮动垃圾，就会出现ConcurrentModeFailure，这时虚拟机将临时启用SerialOld来替代CMS。<br>
+标记-清除算法导致的空间碎片，往往出现老年代空间剩余，但无法找到足够大连续空间来分配当前对象，不得不提前触发一次Full GC。</p>
+<p>2.4.7 G1收集器<br>
+G1（Garbage-First），它是一款面向服务端应用的垃圾收集器，在多CPU和大内存的场景下有很好的性能。HotSpot开发团队赋予他的使命是未来替换掉CMS收集器。<br>
+堆被分为新生代和老年代，其他收集器进行收集的范围都是整个新生代或者老年代，而G1可以直接对新生代和老年代一起回收。<br>
+<img src="https://PaIn22152.github.io/post-images/1627381811115.png" alt="" loading="lazy"><br>
+G1把堆划分成多个大小相等的独立区域（Region），新生代和老年代不再物理隔离。<br>
+<img src="https://PaIn22152.github.io/post-images/1627381895085.png" alt="" loading="lazy"><br>
+通过引入Region的概念，从而将原来的一整块内存空间划分成多个小空间，使得每个小空间可以单独进行垃圾回收。这种划分方法带来了很大的灵活性，使得可预测的停顿时间模型成为可能。通过记录每个Region垃圾回收时间以及回收所获得的空间（这两个值是通过过去回收的经验获得），并维护一个优先列表，每次根据允许的收集时间，优先回收价值最大的Region。</p>
+<p>每个Region都有一个Remembered Set，用来记录该Region对象的引用对象所在的Region。通过使用Remembered Set，在做可达性分析的时候就可以吗、避免全堆扫描。<br>
+<img src="https://PaIn22152.github.io/post-images/1627436708762.jpg" alt="" loading="lazy"><br>
+如果不计算维护Remembered Set的操作，G1收集器的运作大致可划分为以下几个步骤：<br>
+1.初始标记；<br>
+2.并发标记；<br>
+3.最终标记：为了修正在并发标记期间，因用户程序继续运作而导致标记产生变动的那一部分标记记录，虚拟机将这段时间对象变化记录在线程的Remembered Set Logs里面，最终标记阶段需要把Remembered Set Logs的数据合并到Remembered Set中。这阶段需要停顿线程，但是可并行执行。<br>
+4.筛选回收：首先对各个Region中的回收价值和成本进行排序，根据用户期望的GC停顿时间在制定回收计划。此阶段其实也可以做到与用户程序一起并发执行，但是因为只回收一部分Region，时间是用户可控制的，而且停顿用户线程将大幅提高收集效率。</p>
+<p>G1收集器的特点：<br>
+1.空间整合：整体来看是基于“标记-整理”算法实现的收集器，从局部（两个Region之间）上来看是基于“复制”算法实现的，这意味着运行期间不会产生内存空间碎片。<br>
+2.可预测的停顿：能让使用者明确指定在一个长度为M毫秒的时间片段内，消在GC上的时间不得超过N毫秒。</p>
+<h2 id="25-内存分配和回收">2.5 内存分配和回收</h2>
+<p>将堆区内存划分为新生代和老年代，默认比例是1:2，可以通过参数-XX:NewRatio来指定。<br>
+在新生代又被划分为一个较大的Eden空间和两个较小的Survivor空间，默认比例8:1:1。<br>
+Minor GC：回收新生代，因为新生代对象存活时间较短，因此Minor GC会频繁执行，执行的速度一般也会比较快。<br>
+Major GC：也叫Full GC，回收新生代和老年代，老年代对象存活时间长，因此Major GC很少执行，执行速度也会比Minor GC慢很多。</p>
+<h3 id="251-分配和回收策略">2.5.1 分配和回收策略</h3>
+<p>大多数情况下，对象在新生代的Eden上分配，当空间不足时，发起Minor GC，把Eden区和Survivor from区的存活对象复制到Survivor to区，如果to区空间不足，剩余对象分配在老年代（空间分配担保），然后from和to角色转换。</p>
+<p>大对象直接进入到老年代，大对象是指需要连续内存空间的对象，最典型的大对象是那种很长的字符串以及数组。这样做是为了避免大对象在Eden和Survivor之间大量内存复制。通过-XX:PretenureSizeThreshold来指定，大于此值的对象直接进入老年代分配。</p>
+<p>长期存活的对象进入老年代，为对象定义年龄计数器，没经过一次Minor GC依然存活的对象，年龄加1，增加到一定的年龄则移动到老年代中。通过-XX:MaxTenuringThreshold来指定年龄阈值。</p>
+<p>动态对象年龄判定，虚拟机并不是永远要求对象的年龄必须达到MaxTenuringThreshold才能晋升老年代，如果在Survivor中相同年龄所有对象大小的总和大于Survivor空间的一半，则年龄大于等于该年龄的对象可以直接进入老年代。</p>
+<p>空间分配担保，在发生Minor GC之前，虚拟机先检查老年代最大可用的连续空间是否大于新生代所有对象总空间，如果条件成立，那么Minor GC可以确定是安全的。如果不成立，虚拟机会查看HandlePromotionFailure的值是否允许担保失败，如果允许，那我就会继续检查老年代最大可用的连续空间是否大于历次晋升老年代对象的平均大小，如果大于，将尝试进行一次Minor GC；如果小于，或者HandlePromotionFailure的值不允许冒险，那么就要进行一次Major GC。</p>
+<h3 id="252-major-gc的触发条件">2.5.2 Major GC的触发条件</h3>
+<p>对于Minor GC，触发条件非常简单，当Eden空间满了就触发。而Major GC触发相对复杂，有以下条件：<br>
+1.调用System.gc();只是建议虚拟机执行Major GC，但是虚拟机不一定会真正执行。不建议使用这种方式，而是让虚拟机管理内存；<br>
+2.老年代空间不足，当大对象和长期存活的对象进入老年代时，老年代内存空间不足。<br>
+3.空间分配担保失败，使用复制算法的Minor GC需要老年代的内存空间做担保，如果担保失败会执行一次Major GC。<br>
+4.JDK1.7以及以前版本，永久代空间不足。在JDK1.7及以前，HotSpot虚拟机中的方法区是用永久代实现的，永久代中存放的是一些Class的信息、常量、静态变量等数据。当系统中要加载的类、反射的类和调用的方法较多时，永久代可能会被占满，在未配置为采用CMS GC的情况下也会执行Major GC。如果Major GC后仍然回收不了，那么虚拟机就会OOM。为了避免以上原因引起的Major GC，可增大永久代空间，或转为使用CMS GC。<br>
+5.Concurrent Mode Failure，执行CMS GC的过程中，同时有对象要放入老年代，而此时老年代空间不足（可能是GC过程中浮动垃圾过多导致暂时性的空间不足），便会报ConcurrentModeFailure错误，并触发Major GC。</p>
+<h1 id="3类加载机制">3.类加载机制</h1>
+<p>类是在运行期间第一次使用时动态加载的，而不是一次性加载所有类，因为那么做会占用很多内存。</p>
+<h2 id="31-加载过程">3.1 加载过程</h2>
+<p>类的生命周期有7个阶段：加载，验证，准备，解析，初始化，  使用，卸载。其中前五个阶段属于类加载过程。<br>
+加载。完成以下三件事：<br>
+通过类的完全限定名称获取定义该类的二进制子节流；<br>
+将该子节流表示的静态存储结构转换为方法区的运行时存储结构；<br>
+在内存中生成一个代表该类的Class对象，作为方法区中该类各种数据的访问入口。<br>
+验证。确保Class文件的子节流中包含的信息符合当前虚拟机调度要求，并且不会危害虚拟机自身安全。<br>
+准备。被static修饰的变量叫类变量，准备阶段为类变量分配内存并设置初始值，使用的是方法区的内存。<br>
+解析。将常量池的符号引用替换为直接引用的过程。<br>
+初始化。在初始化阶段才真正开始执行类中定义的Java程序代码。初始化阶段是虚拟机执行构造器&lt;clinit&gt;()方法的过程。在准备阶段，类变量已经赋过一次系统要求的初始值，而在初始化阶段，根据程序员通过程序制定的主观计划去初始化类变量和其他资源。</p>
+<h2 id="32-类与类加载器">3.2 类与类加载器</h2>
+<p>两个类相等，需要类本身相等，并且使用同一个类加载器加载。这是因为每一个类加载器都拥有一个独立的类名称空间。这里的相等，包括类的Class对象的equals方法，isAssignableFrom方法，isInstance方法的返回结果为true，也包括使用instanceof关键字做对象所属关系判定结果为true。</p>
+<p>从Java虚拟机的角度来讲，分为两种类加载器：1.启动类加载器，使用C++实现，是虚拟机自身的一部分；2.所有其他类的加载器，使用Java实现，独立于虚拟机，继承自抽象类java.lang.ClassLoader。</p>
+<p>从Java开发人员的角度看，可以分为：<br>
+1.启动类加载器，此类加载器负责将存放在&lt;JRE_HOME&gt;\lib目录中的，或者被-Xbootclasspath参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如rt.jar，名字不符合的类库即使放在lib目录中也不会被加载）类库加载到虚拟机了、内存中。启动类加载器无法被Java程序直接引用，用户在编写自定义类加载器时，如果需要把请求委派给启动类加载器，直接使用null代替即可。<br>
+2.扩展类加载器，这个类加载器是由ExtClassLoader(sun.misc.Launcher<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>x</mi><mi>t</mi><mi>C</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>L</mi><mi>o</mi><mi>a</mi><mi>d</mi><mi>e</mi><mi>r</mi><mo>)</mo><mi mathvariant="normal">实</mi><mi mathvariant="normal">现</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">。</mi><mi mathvariant="normal">它</mi><mi mathvariant="normal">负</mi><mi mathvariant="normal">责</mi><mi mathvariant="normal">将</mi><mo>&lt;</mo><mi>J</mi><mi>A</mi><mi>V</mi><msub><mi>A</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mo>&gt;</mo><mi mathvariant="normal">/</mi><mi>l</mi><mi>i</mi><mi>b</mi><mi mathvariant="normal">/</mi><mi>e</mi><mi>x</mi><mi>t</mi><mi mathvariant="normal">或</mi><mi mathvariant="normal">者</mi><mi mathvariant="normal">被</mi><mi>j</mi><mi>a</mi><mi>v</mi><mi>a</mi><mi mathvariant="normal">.</mi><mi>e</mi><mi>x</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi>d</mi><mi>i</mi><mi>r</mi><mi mathvariant="normal">系</mi><mi mathvariant="normal">统</mi><mi mathvariant="normal">变</mi><mi mathvariant="normal">量</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">指</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">路</mi><mi mathvariant="normal">径</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">类</mi><mi mathvariant="normal">库</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">载</mi><mi mathvariant="normal">到</mi><mi mathvariant="normal">内</mi><mi mathvariant="normal">存</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">开</mi><mi mathvariant="normal">发</mi><mi mathvariant="normal">者</mi><mi mathvariant="normal">可</mi><mi mathvariant="normal">以</mi><mi mathvariant="normal">直</mi><mi mathvariant="normal">接</mi><mi mathvariant="normal">使</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">扩</mi><mi mathvariant="normal">展</mi><mi mathvariant="normal">类</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">载</mi><mi mathvariant="normal">器</mi><mi mathvariant="normal">。</mi><mn>3.</mn><mi mathvariant="normal">应</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">程</mi><mi mathvariant="normal">序</mi><mi mathvariant="normal">类</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">载</mi><mi mathvariant="normal">器</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">这</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">类</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">载</mi><mi mathvariant="normal">器</mi><mi mathvariant="normal">是</mi><mi mathvariant="normal">由</mi><mi>A</mi><mi>p</mi><mi>p</mi><mi>C</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>L</mi><mi>o</mi><mi>a</mi><mi>d</mi><mi>e</mi><mi>r</mi><mo>(</mo><mi>s</mi><mi>u</mi><mi>n</mi><mi mathvariant="normal">.</mi><mi>m</mi><mi>i</mi><mi>s</mi><mi>c</mi><mi mathvariant="normal">.</mi><mi>L</mi><mi>a</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>h</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">ExtClassLoader)实现的。它负责将&lt;JAVA_HOME&gt;/lib/ext或者被java.ext.dir系统变量所指定路径中的所有类库加载到内存中，开发者可以直接使用扩展类加载器。
+3.应用程序类加载器，这个类加载器是由AppClassLoader(sun.misc.Launcher</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">L</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">现</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">它</span><span class="mord cjk_fallback">负</span><span class="mord cjk_fallback">责</span><span class="mord cjk_fallback">将</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault" style="margin-right:0.09618em;">J</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">i</span><span class="mord mathdefault">b</span><span class="mord">/</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span><span class="mord cjk_fallback">或</span><span class="mord cjk_fallback">者</span><span class="mord cjk_fallback">被</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">a</span><span class="mord">.</span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span><span class="mord">.</span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord cjk_fallback">系</span><span class="mord cjk_fallback">统</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">指</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">路</span><span class="mord cjk_fallback">径</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">类</span><span class="mord cjk_fallback">库</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">到</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">存</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">开</span><span class="mord cjk_fallback">发</span><span class="mord cjk_fallback">者</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">直</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">扩</span><span class="mord cjk_fallback">展</span><span class="mord cjk_fallback">类</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">器</span><span class="mord cjk_fallback">。</span><span class="mord">3</span><span class="mord">.</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">序</span><span class="mord cjk_fallback">类</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">器</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">这</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">类</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">器</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">由</span><span class="mord mathdefault">A</span><span class="mord mathdefault">p</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">s</span><span class="mord mathdefault">L</span><span class="mord mathdefault">o</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord">.</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord">.</span><span class="mord mathdefault">L</span><span class="mord mathdefault">a</span><span class="mord mathdefault">u</span><span class="mord mathdefault">n</span><span class="mord mathdefault">c</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>AppClassLoader)实现的，由于这个类加载器是ClassLoader中的getSystemClassLoader()方法的返回值，因此一般称为系统类加载器。它负责加载用户类路径(ClassPath)上所指定的类库，开发者可以直接使用这个类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序默认的类加载器。</p>
+<h2 id="33-双亲委派模型">3.3 双亲委派模型</h2>
+<p>应用程序是由三种加载器互相配合而实现类加载，除此之外还可以加入自己定义的类加载器。<br>
+下图展示了类加载器之间的层次关系，称为双亲委派模型。该模型要求除了顶层的启动类加载器外，其他的类加载器都要有自己的父类加载器。这里的父子关系一般通过组合关系来实现，而不是继承。<br>
+<img src="https://PaIn22152.github.io/post-images/1627547072942.png" alt="" loading="lazy"></p>
+<p>工作过程：一个类加载器首先将类加载请求转发到父类加载器，只有当父类加载器无法完成时，才尝试自己加载。<br>
+好处：这么做使得Java类随着他的类加载器一起具有一种优先级的层次关系，从而使得基础类得到统一。例如java.lang.Object存放在rt.jar中，如果编写另外一个java.lang.Object并放到ClassPath中，程序可以编译通过。由于双亲委派模型的存在，所以在rt.jar中的Object比ClassPath中的Object优先级更高，这是因为rt.jar中的Object使用的是启动类加载器，而ClassPath中的Object使用的是应用程序类加载器。rt.jar中的Object优先级更高，那么程序中所有的Object都是这个Object。</p>
+<p>实现：以下是抽象类java.lang.ClassLoader的代码片段，其中的loadClass()方法运行过程如下：先检查类是否已经加载过，如果没有则让父类加载器去加载。当父类加载器加载失败时抛出ClassNotFoundException，此时尝试自己去加载。</p>
+<pre><code class="language-java">public abstract class ClassLoader {
+    // The parent class loader for delegation
+    private final ClassLoader parent;
+
+    public Class&lt;?&gt; loadClass(String name) throws ClassNotFoundException {
+        return loadClass(name, false);
+    }
+
+    protected Class&lt;?&gt; loadClass(String name, boolean resolve) throws ClassNotFoundException {
+        synchronized (getClassLoadingLock(name)) {
+            // First, check if the class has already been loaded
+            Class&lt;?&gt; c = findLoadedClass(name);
+            if (c == null) {
+                try {
+                    if (parent != null) {
+                        c = parent.loadClass(name, false);
+                    } else {
+                        c = findBootstrapClassOrNull(name);
+                    }
+                } catch (ClassNotFoundException e) {
+                    // ClassNotFoundException thrown if class not found
+                    // from the non-null parent class loader
+                }
+
+                if (c == null) {
+                    // If still not found, then invoke findClass in order
+                    // to find the class.
+                    c = findClass(name);
+                }
+            }
+            if (resolve) {
+                resolveClass(c);
+            }
+            return c;
+        }
+    }
+
+    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+        throw new ClassNotFoundException(name);
+    }
+}
+</code></pre>
+<p>自定义类加载器实现<br>
+以下代码中的FileSystemClassLoader是自定义类加载器，继承自java.lang.ClassLoader，用于加载文件系统上的类。它首先根据类的全名在文件系统上查找类的字节码文件(.class文件)，然后读取该文件内容，最后通过defineClass方法来把这些字节代码转换成java.lang.Class类的实例。<br>
+java.lang.ClassLoader的loadClass方法实现了双亲委派的逻辑，自定义类加载器一般不去重写它，但是需要重写findClass方法。</p>
+<pre><code class="language-java">public class FileSystemClassLoader extends ClassLoader {
+
+    private String rootDir;
+
+    public FileSystemClassLoader(String rootDir) {
+        this.rootDir = rootDir;
+    }
+
+    protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException {
+        byte[] classData = getClassData(name);
+        if (classData == null) {
+            throw new ClassNotFoundException();
+        } else {
+            return defineClass(name, classData, 0, classData.length);
+        }
+    }
+
+    private byte[] getClassData(String className) {
+        String path = classNameToPath(className);
+        try {
+            InputStream ins = new FileInputStream(path);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            int bufferSize = 4096;
+            byte[] buffer = new byte[bufferSize];
+            int bytesNumRead;
+            while ((bytesNumRead = ins.read(buffer)) != -1) {
+                baos.write(buffer, 0, bytesNumRead);
+            }
+            return baos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private String classNameToPath(String className) {
+        return rootDir + File.separatorChar
+                + className.replace('.', File.separatorChar) + &quot;.class&quot;;
+    }
+}
+</code></pre>
+<h1 id="4android虚拟机dalvik和art">4.Android虚拟机Dalvik和ART</h1>
+<p><a href="https://source.android.com/devices/tech/dalvik/gc-debug?hl=zh-cn">Android的垃圾回收</a></p>
+<h1 id="5常见面试题">5.常见面试题</h1>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://PaIn22152.github.io/post/yan-se-xuan-ze-qi-colorslectorflutter-shi-xian/">
+                  <h3 class="post-title">
+                    颜色选择器ColorSlector，flutter实现
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
